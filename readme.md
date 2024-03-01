@@ -21,3 +21,10 @@
 - [ ] Add support for closing buffers
 - [ ] Add support for previous commands in cmdline
 - [ ] Add support for multi cursor
+- [ ] Adds support for chat gpt
+
+## Bugs?
+
+- At least I was able to identify this in lua files. 
+    - open nvim enter init.lua lsp will load correctly along with treesitter
+    - but if a different file is being open, treesitter and lsp will sometimes load correctly, some of other times won't. Check for vim object
