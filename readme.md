@@ -22,6 +22,7 @@
 - [ ] Add support for previous commands in cmdline
 - [ ] Add support for multi cursor
 - [ ] Adds support for chat gpt
+- [ ] Adds spell check - URGENT
 
 ## Bugs?
 

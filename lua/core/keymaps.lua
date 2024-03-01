@@ -38,6 +38,20 @@ keymap.set("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- TODO: Need some keymaps to split horizontally and vertically
 
+-- Increment and decrement
+keymap.set("n", "+", "<C-a>", opts)
+keymap.set("n", "-", "<C-x>", opts)
+
+-- Delete a word backwards -- Deletes the whole line backwards
+-- keymap.set("n", "bd", "vb_d", opts)
+
+-- Select all
+keymap.set("n", "<C-a>", "gg<S-v>G", opts)
+
+-- Split windows
+keymap.set("n", "<Leader>sh", ":split<CR>", opts)
+keymap.set("n", "<Leader>sv", ":vsplit<CR>", opts)
+
 ----------------------------------------------------------------------------
 -- INSERT
 ----------------------------------------------------------------------------
@@ -68,3 +82,16 @@ keymap.set("v", "p", '"_dP', opts)
 -- Move selection up and down
 keymap.set("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap.set("x", "K", ":move '<-2<CR>gv-gv", opts)
+
+
+----------------------------------------------------------------------------
+-- TERM
+----------------------------------------------------------------------------
+-- Press fd fast to escape
+keymap.set("t", "fd", "<ESC>", opts)
+
+----------------------------------------------------------------------------
+-- COMMAND
+----------------------------------------------------------------------------
+-- Press fd fast to escape
+keymap.set("c", "fd", "<ESC>", opts)
