@@ -20,3 +20,4 @@
 - [ ] Add surround plugin
 - [ ] Add support for closing buffers
 - [ ] Add support for previous commands in cmdline
+- [ ] Add support for multi cursor
