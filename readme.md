@@ -16,3 +16,7 @@
 - [ ] Add default languages for mason and treesitter
 - [ ] Behavior for neo-tree, when I Enter a file to automatically close neo-tree
 - [ ] Add support for copilot
+- [ ] Add treesitter selection, increase selection and decrease selection
+- [ ] Add surround plugin
+- [ ] Add support for closing buffers
+- [ ] Add support for previous commands in cmdline
