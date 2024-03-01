@@ -38,9 +38,6 @@ keymap.set("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- TODO: Need some keymaps to split horizontally and vertically
 
--- Floating command line
--- TODO: DOES KEYMAPS FOR PLUGINS BE IN THE SAME PLUGING CONFIG FILE?
-vim.api.nvim_set_keymap("n", ":", "<cmd>FineCmdline<CR>", { noremap = true })
 ----------------------------------------------------------------------------
 -- INSERT
 ----------------------------------------------------------------------------
