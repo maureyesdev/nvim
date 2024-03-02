@@ -18,7 +18,7 @@
 - [ ] Add support for copilot
 - [x] Add treesitter selection, increase selection and decrease selection
 - [ ] Add surround plugin
-- [ ] Add support for closing buffers
+- [x] Add support for closing buffers
 - [ ] Add support for previous commands in cmdline
 - [ ] Add support for multi cursor
 - [ ] Adds support for chat gpt
