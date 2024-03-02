@@ -10,10 +10,85 @@ return {
     -- LSP Configuration & Plugins
     "neovim/nvim-lspconfig",
     dependencies = {
-      { "williamboman/mason.nvim" } ,
+      { "williamboman/mason.nvim" },
       { "williamboman/mason-lspconfig.nvim" },
-      { "j-hui/fidget.nvim", opts = {} },
+      { "j-hui/fidget.nvim" },
       { "folke/neodev.nvim" }
+    },
+    keys = {
+      {
+        "<Leader>lsp",
+        "<cmd>LspInfo<CR>",
+        desc = "Lsp info"
+      },
+      {
+        "<Leader>gd",
+        function()
+          require("telescope.builtin").lsp_definitions({ reuse_win = true })
+        end,
+        desc = "Goto Definition",
+      },
+      {
+        "<Leader>gr",
+        "<cmd>Telescope lsp_references<cr>",
+        desc = "References"
+      },
+      -- {
+      --   "<Leader>gD",
+      --   vim.lsp.buf.declaration,
+      --   desc = "Goto Declaration"
+      -- },
+      -- {
+      --   "<Leader>gI",
+      --   function()
+      --     require("telescope.builtin").lsp_implementations({ reuse_win = true })
+      --   end,
+      --   desc = "Goto Implementation"
+      -- },
+      {
+        "<Leader>k",
+        vim.lsp.buf.hover,
+        desc = "Hover"
+      },
+      -- {
+      --   "<Leader>gk",
+      --   vim.lsp.buf.signature_help,
+      --   desc = "Signature Help",
+      -- },
+      -- {
+      --   "<c-k>",
+      --   vim.lsp.buf.signature_help,
+      --   mode = "i",
+      --   desc = "Signature Help",
+      -- },
+      -- TODO: NEED TO FIGURE OUT TO PUT THIS IN A MORE ELEGANT WAY
+      {
+        "<leader>ca",
+        vim.lsp.buf.code_action,
+        desc = "Code Action",
+        mode = { "n", "v" },
+      },
+      -- Organize imports, sort imports, remove unused imports, add missing imports
+      {
+        "<leader>cA",
+        function()
+          vim.lsp.buf.code_action({
+            context = {
+              only = {
+                "source",
+              },
+              diagnostics = {},
+            },
+          })
+        end,
+        desc = "Source Action",
+      },
+      -- TODO: NEED TO FIGURE OUT TO PUT THIS IN A MORE ELEGANT WAY
+      {
+        "<leader>cr",
+        vim.lsp.buf.rename,
+        desc = "Rename",
+      },
     },
     config = function()
       local servers = {
@@ -40,7 +115,7 @@ return {
         --   filetypes = {"html", "css", "scss"}
         -- },
         cssls = {
-          filetypes = {"vue", "css", "scss"}
+          filetypes = { "vue", "css", "scss" }
         },
 
         lua_ls = {

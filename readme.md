@@ -23,6 +23,7 @@
 - [ ] Add support for multi cursor
 - [ ] Adds support for chat gpt
 - [ ] Adds spell check - URGENT
+- [ ] Adds space inside braces
 
 ## Bugs?
 
