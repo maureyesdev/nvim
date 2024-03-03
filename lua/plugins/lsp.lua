@@ -89,6 +89,13 @@ return {
         vim.lsp.buf.rename,
         desc = "Rename",
       },
+      {
+        "<leader>gs",
+        function()
+          require("telescope.builtin").lsp_document_symbols()
+        end,
+        desc = "Goto Symbol",
+      },
     },
     config = function()
       local servers = {
