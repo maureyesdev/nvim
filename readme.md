@@ -9,7 +9,7 @@
 - [ ] Personalize lualine in order to display LspInfo and see what it got attached to the buffer
 - [x] Add highlight when copy
 - [ ] Make the cmdline width absolute width and not relative width for buffer
-- [ ] Personalize init dashboard - Maybe a gekko
+- [x] Personalize init dashboard - Maybe a gekko
 - [ ] Add a restapi client
 - [ ] Add a markdown previewer
 - [ ] Add a notification plugin
@@ -17,7 +17,7 @@
 - [x] Behavior for neo-tree, when I Enter a file to automatically close neo-tree
 - [ ] Add support for copilot
 - [x] Add treesitter selection, increase selection and decrease selection
-- [ ] Add surround plugin
+- [x] Add surround plugin
 - [x] Add support for closing buffers
 - [ ] Add support for previous commands in cmdline
 - [ ] Add support for multi cursor
