@@ -25,6 +25,8 @@
 - [x] Adds spell check - URGENT
 - [ ] Adds space inside braces
 - [ ] Remove highlight after a search -> `:noh`
+- [ ] Personalize the floating of telescope. For instace in the find search I don't need a little preview next to the file name
+- [ ] Adds case transformation - upper to lower and back
 
 ## Bugs?
 
