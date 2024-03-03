@@ -1,3 +1,4 @@
+-- TODO: need to move all of the telescope keymaps to telescope, even when they are lsps
 return {
   -- Setup neovim lua configuration
   {
@@ -93,6 +94,13 @@ return {
         "<leader>gs",
         function()
           require("telescope.builtin").lsp_document_symbols()
+        end,
+        desc = "Goto Symbol",
+      },
+      {
+        "<leader>aa",
+        function()
+          require("telescope.builtin").spell_suggest(require("telescope.themes").get_cursor({}))
         end,
         desc = "Goto Symbol",
       },

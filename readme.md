@@ -22,8 +22,9 @@
 - [ ] Add support for previous commands in cmdline
 - [ ] Add support for multi cursor
 - [ ] Adds support for chat gpt
-- [ ] Adds spell check - URGENT
+- [x] Adds spell check - URGENT
 - [ ] Adds space inside braces
+- [ ] Remove highlight after a search -> `:noh`
 
 ## Bugs?
 
