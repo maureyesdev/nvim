@@ -52,6 +52,8 @@ keymap.set("n", "<C-a>", "gg<S-v>G", opts)
 keymap.set("n", "<Leader>sh", ":split<CR>", opts)
 keymap.set("n", "<Leader>sv", ":vsplit<CR>", opts)
 
+-- Quit all
+keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 ----------------------------------------------------------------------------
 -- INSERT
 ----------------------------------------------------------------------------
