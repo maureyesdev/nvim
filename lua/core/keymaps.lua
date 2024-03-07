@@ -46,7 +46,7 @@ keymap.set("n", "-", "<C-x>", opts)
 -- keymap.set("n", "bd", "vb_d", opts)
 
 -- Select all
-keymap.set("n", "<C-a>", "gg<S-v>G", opts)
+keymap.set("n", "<Leader>aa", "gg<S-v>G", opts)
 
 -- Split windows
 keymap.set("n", "<Leader>sh", ":split<CR>", opts)

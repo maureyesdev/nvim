@@ -36,10 +36,20 @@ vim.opt.numberwidth = 4                         -- set number column width to 2 
 vim.opt.signcolumn =
 "yes"                                           -- always show the sign column, otherwise it would shift the text each time
 vim.opt.wrap = true                             -- display lines as one long line
-vim.opt.scrolloff = 8
-vim.opt.sidescrolloff = 8
+vim.opt.scrolloff = 12
+vim.opt.sidescrolloff = 12
 
 vim.opt.fillchars:append { eob = " " } -- To remove anoying ~ for empty lines or unused lines in editor file
 
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
+
+-------------------------------------------------------------------------------
+-- ! THE FOLLOWING SETTINGS NEED TO BE REVIEWED
+-------------------------------------------------------------------------------
+
+vim.opt.colorcolumn = "80"
+
+vim.opt.backup = false
+vim.opt.hlsearch = false
+vim.opt.incsearch = true

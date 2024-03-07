@@ -98,7 +98,7 @@ return {
         desc = "Goto Symbol",
       },
       {
-        "<leader>aa",
+        "<leader>ss",
         function()
           require("telescope.builtin").spell_suggest(require("telescope.themes").get_cursor({}))
         end,
