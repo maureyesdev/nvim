@@ -1,15 +1,15 @@
-# Gekko vim
+# Neovim
 
 ## Description
 
 ## Todo
 
-- [ ] Add search in file - Is this even possible?
+- [ ] Add search in file - Is this even possible? -> `/` can do the trick
 - [ ] Add a debugger for python and javascript at least
 - [ ] Personalize lualine in order to display LspInfo and see what it got attached to the buffer
 - [x] Add highlight when copy
 - [ ] Make the cmdline width absolute width and not relative width for buffer
-- [x] Personalize init dashboard - Maybe a gekko
+- [x] Personalize init dashboard
 - [ ] Add a restapi client
 - [ ] Add a markdown previewer
 - [ ] Add a notification plugin
@@ -23,13 +23,9 @@
 - [ ] Add support for multi cursor
 - [ ] Adds support for chat gpt
 - [x] Adds spell check - URGENT
+- [ ] highlight wrong spell check instead of underline
 - [ ] Adds space inside braces
 - [ ] Remove highlight after a search -> `:noh`
 - [ ] Personalize the floating of telescope. For instace in the find search I don't need a little preview next to the file name
 - [ ] Adds case transformation - upper to lower and back
-
-## Bugs?
-
-- At least I was able to identify this in lua files. 
-    - open nvim enter init.lua lsp will load correctly along with treesitter
-    - but if a different file is being open, treesitter and lsp will sometimes load correctly, some of other times won't. Check for vim object
+- [x] Go to dashboard when no buffers left
