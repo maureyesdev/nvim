@@ -19,6 +19,7 @@ return {
     local neo_tree_command = require("neo-tree.command")
     neo_tree.setup({
       window = {
+        -- position = "right",
         position = "right",
         width = 40,
       },
