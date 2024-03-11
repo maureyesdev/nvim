@@ -11,7 +11,7 @@
 - [ ] Make the cmdline width absolute width and not relative width for buffer
 - [x] Personalize init dashboard
 - [ ] Add a restapi client
-- [ ] Add a markdown previewer
+- [x] Add a markdown previewer
 - [ ] Add a notification plugin
 - [ ] Add default languages for mason and treesitter
 - [x] Behavior for neo-tree, when I Enter a file to automatically close neo-tree
