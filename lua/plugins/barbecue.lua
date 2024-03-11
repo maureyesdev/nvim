@@ -1,4 +1,4 @@
-return {
+local barbecue = {
   "utilyre/barbecue.nvim",
   name = "barbecue",
   version = "*",
@@ -19,3 +19,6 @@ return {
     })
   end
 }
+
+-- * Disabling because lualine has the route of the file already
+return {}

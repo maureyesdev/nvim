@@ -6,7 +6,7 @@
 
 - [ ] Add search in file - Is this even possible? -> `/` can do the trick
 - [ ] Add a debugger for python and javascript at least
-- [ ] Personalize lualine in order to display LspInfo and see what it got attached to the buffer
+- [x] Personalize lualine in order to display LspInfo and see what it got attached to the buffer
 - [x] Add highlight when copy
 - [ ] Make the cmdline width absolute width and not relative width for buffer
 - [x] Personalize init dashboard

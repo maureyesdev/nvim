@@ -44,6 +44,8 @@ vim.opt.fillchars:append { eob = " " } -- To remove anoying ~ for empty lines or
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
 
+
+vim.opt.laststatus = 3
 -------------------------------------------------------------------------------
 -- ! THE FOLLOWING SETTINGS NEED TO BE REVIEWED
 -------------------------------------------------------------------------------
