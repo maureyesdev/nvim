@@ -15,7 +15,7 @@
 - [ ] Add a notification plugin
 - [ ] Add default languages for mason and treesitter
 - [x] Behavior for neo-tree, when I Enter a file to automatically close neo-tree
-- [ ] Add support for copilot
+- [x] Add support for copilot
 - [x] Add treesitter selection, increase selection and decrease selection
 - [x] Add surround plugin
 - [x] Add support for closing buffers
