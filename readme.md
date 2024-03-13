@@ -1,6 +1,32 @@
 # Neovim
 
-## Description
+1. Dashboard
+
+![alt text](image.png)
+
+2. Status bar, lsp progress, syntax highlight
+
+![alt text](image-1.png)
+
+3. Tabs, split windows, file explorer
+
+![alt text](image-3.png)
+
+4. Find files
+
+![alt text](image-4.png)
+
+5. Find text in files
+
+![alt text](image-5.png)
+
+6. Notifications
+
+![alt text](image-6.png)
+
+7. Git manager
+
+![alt text](image-8.png)
 
 ## Todo
 
@@ -12,7 +38,7 @@
 - [x] Personalize init dashboard
 - [ ] Add a restapi client
 - [x] Add a markdown previewer
-- [ ] Add a notification plugin
+- [x] Add a notification plugin
 - [ ] Add default languages for mason and treesitter
 - [x] Behavior for neo-tree, when I Enter a file to automatically close neo-tree
 - [x] Add support for copilot
@@ -21,7 +47,6 @@
 - [x] Add support for closing buffers
 - [ ] Add support for previous commands in cmdline
 - [ ] Add support for multi cursor
-- [ ] Adds support for chat gpt
 - [x] Adds spell check - URGENT
 - [ ] highlight wrong spell check instead of underline
 - [ ] Adds space inside braces
