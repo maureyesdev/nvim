@@ -6,8 +6,8 @@
 - [x] Default options
 - [ ] Default keymaps
 - [x] Lazy as package manager
-- [ ] LSP - Mason
-- [ ] Completions
+- [x] LSP - Mason
+- [x] Completions
 - [ ] Neovim development with neodev
 - [x] Treesitter
 - [x] Closing pairs

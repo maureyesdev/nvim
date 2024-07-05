@@ -23,24 +23,24 @@ return {
 			local lspconfig = require("lspconfig")
 			lspconfig.lua_ls.setup({
 				capabilities = {},
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = "Replace",
-            },
-            diagnostics = {
-              globals = {
-                "vim"
-              },
-            },
-            workspace = {
-              checkThirdParty = false
-            },
-            telemetry = {
-              enable = false
-            },
-          },
-        },
+				settings = {
+					Lua = {
+						completion = {
+							callSnippet = "Replace",
+						},
+						diagnostics = {
+							globals = {
+								"vim",
+							},
+						},
+						workspace = {
+							checkThirdParty = false,
+						},
+						telemetry = {
+							enable = false,
+						},
+					},
+				},
 			})
 			-- vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
@@ -48,4 +48,3 @@ return {
 		end,
 	},
 }
-
