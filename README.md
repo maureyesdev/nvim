@@ -14,9 +14,9 @@
 - [ ] Brackets pair colorized
 - [ ] Top sticky context
 - [ ] Git
-    - [ ] Git Sign
+    - [x] Git Sign
     - [ ] Compare references
-    - [ ] Compare references
+    - [ ] Blame
 - [ ] File explorer
 - [x] Finder - telescope
     - [x] Find files
