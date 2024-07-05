@@ -1,1 +1,1 @@
-print("options")
+require("config.options")
