@@ -4,7 +4,7 @@
 
 - [x] Config structure
 - [x] Default options
-- [ ] Default keymaps
+- [x] Default keymaps
 - [x] Lazy as package manager
 - [x] LSP - Mason
 - [x] Completions

@@ -6,15 +6,6 @@ return {
     "nvim-tree/nvim-web-devicons",
     "MunifTanjim/nui.nvim",
   },
-  keys = {
-    -- TODO: need to move this to keymap file
-    {
-      "<Leader>e",
-      function()
-        require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
-      end,
-    },
-  },
   config = function()
     local neo_tree = require("neo-tree")
     local neo_tree_command = require("neo-tree.command")
