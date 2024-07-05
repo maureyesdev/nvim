@@ -25,7 +25,7 @@
     - [x] Code actions - telescope and lsp integration
     - [x] Go to references - telescope and lsp integration
     - [x] Go to definition - telescope and lsp integration
-- [ ] Multi cursor
+- [x] Multi cursor
 - [ ] Debugger
     - [ ] js
     - [ ] python
