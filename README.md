@@ -9,7 +9,9 @@
 - [ ] LSP - Mason
 - [ ] Completions
 - [ ] Neovim development with neodev
-- [ ] Treesitter
+- [x] Treesitter
+- [x] Closing pairs
+- [ ] Brackets pair colorized
 - [ ] Top sticky context
 - [ ] Git
     - [ ] Git Sign
@@ -23,7 +25,6 @@
     - [ ] Go to references - telescope and lsp integration
     - [ ] Go to implementations - telescope and lsp integration
     - [ ] Go to definition - telescope and lsp integration
-- [ ] Brackets pair colorized
 - [ ] Multi cursor
 
 ## Default options
