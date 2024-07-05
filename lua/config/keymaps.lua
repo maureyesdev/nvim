@@ -151,7 +151,17 @@ keymap.set("n", "<leader>ss", function()
   )
 end, opts)
 
---
+----------------------------------------------------------------------------
+-- NEO TREE
+----------------------------------------------------------------------------
 keymap.set("n", "<leader>e", function()
   require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+end, opts)
+
+
+----------------------------------------------------------------------------
+-- MULTICURSOR
+----------------------------------------------------------------------------
+keymap.set("n", "<leader>m", function()
+  vim.cmd("MCstart")
 end, opts)
