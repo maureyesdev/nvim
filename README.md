@@ -18,13 +18,13 @@
     - [ ] Compare references
     - [ ] Compare references
 - [ ] File explorer
-- [ ] Finder - telescope
-    - [ ] Find files
-    - [ ] Find in current file
-    - [ ] Code actions - telescope and lsp integration
-    - [ ] Go to references - telescope and lsp integration
-    - [ ] Go to implementations - telescope and lsp integration
-    - [ ] Go to definition - telescope and lsp integration
+- [x] Finder - telescope
+    - [x] Find files
+    - [x] Find in current file
+    - [x] Find in current project directory
+    - [x] Code actions - telescope and lsp integration
+    - [x] Go to references - telescope and lsp integration
+    - [x] Go to definition - telescope and lsp integration
 - [ ] Multi cursor
 
 ## Default options

@@ -12,7 +12,12 @@ return {
 			local mason_lsp_config = require("mason-lspconfig")
 			mason_lsp_config.setup({
 				ensure_installed = {
-					"lua_ls",
+					-- LSPs
+					"lua_ls", -- lua
+					"vtsls", -- js
+					-- DAPs
+					-- Linters
+					-- Formatters
 				},
 			})
 		end,
@@ -21,30 +26,23 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			local lspconfig = require("lspconfig")
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 			lspconfig.lua_ls.setup({
-				capabilities = {},
+				capabilities = capabilities,
 				settings = {
 					Lua = {
-						completion = {
-							callSnippet = "Replace",
-						},
-						diagnostics = {
-							globals = {
-								"vim",
-							},
-						},
-						workspace = {
-							checkThirdParty = false,
-						},
-						telemetry = {
-							enable = false,
-						},
+						completion = { callSnippet = "Replace" },
+						diagnostics = { globals = { "vim" } },
+						workspace = { checkThirdParty = false },
+						telemetry = { enable = false },
 					},
 				},
 			})
-			-- vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-			-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-			-- vim.keymap.set("n", ".", vim.lsp.buf.code_action, {})
+
+			lspconfig.vtsls.setup({
+				capabilities = capabilities,
+			})
 		end,
 	},
 }
