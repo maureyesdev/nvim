@@ -172,3 +172,5 @@ end, opts)
 keymap.set("n", "<leader>gp", function()
   require("gitsigns").preview_hunk()
 end, opts)
+
+keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", opts)
