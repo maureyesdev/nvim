@@ -165,3 +165,10 @@ end, opts)
 keymap.set("n", "<leader>m", function()
   vim.cmd("MCstart")
 end, opts)
+
+----------------------------------------------------------------------------
+-- GIT
+----------------------------------------------------------------------------
+keymap.set("n", "<leader>gp", function()
+  require("gitsigns").preview_hunk()
+end, opts)
