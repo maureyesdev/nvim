@@ -12,13 +12,9 @@ return {
       local mason_lsp_config = require("mason-lspconfig")
       mason_lsp_config.setup({
         ensure_installed = {
-          -- LSPs
           "lua_ls", -- lua
           "vtsls", -- js
           "jsonls", -- json
-          -- DAPs
-          -- Linters
-          -- Formatters
         },
       })
     end,
@@ -47,6 +43,24 @@ return {
 
       lspconfig.jsonls.setup({
         capabilities = capabilities,
+      })
+    end,
+  },
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    requires = {
+      "williamboman/mason.nvim",
+    },
+    config = function()
+      require("mason-tool-installer").setup({
+        ensure_installed = {
+          -- Formatters
+          "black", -- python
+          "prettier", -- js
+          "stylua", -- lua
+          -- Linters
+          -- DAPs
+        },
       })
     end,
   },
