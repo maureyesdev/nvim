@@ -15,9 +15,10 @@
 - [ ] Top sticky context
 - [ ] Git
     - [x] Git Sign
+    - [x] Git UI - Lazygit
     - [ ] Compare references
     - [ ] Blame
-- [ ] File explorer
+- [x] File explorer
 - [x] Finder - telescope
     - [x] Find files
     - [x] Find in current file
