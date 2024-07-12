@@ -2,8 +2,8 @@ return {
   {
     "yorickpeterse/nvim-tree-pairs",
     config = function()
-      require('tree-pairs').setup()
-    end
+      require("tree-pairs").setup()
+    end,
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -34,5 +34,5 @@ return {
         },
       })
     end,
-  }
+  },
 }

@@ -124,7 +124,6 @@ keymap.set("n", "<leader>gs", function()
   require("telescope.builtin").lsp_document_symbols()
 end, opts)
 
-
 -- Description: Show hover specification
 -- Keymap: leader + k
 keymap.set("n", "<leader>k", function()
@@ -157,7 +156,6 @@ end, opts)
 keymap.set("n", "<leader>e", function()
   require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
 end, opts)
-
 
 ----------------------------------------------------------------------------
 -- MULTICURSOR

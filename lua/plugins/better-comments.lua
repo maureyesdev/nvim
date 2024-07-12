@@ -48,8 +48,7 @@ return {
           bold = false,
           virtual_text = "This is virtual Text from WARNING",
         },
-
-      }
+      },
     })
   end,
 }

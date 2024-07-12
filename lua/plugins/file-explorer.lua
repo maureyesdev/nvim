@@ -21,9 +21,9 @@ return {
           event = "file_opened",
           handler = function()
             neo_tree_command.execute({ action = "close" })
-          end
-        }
-      }
+          end,
+        },
+      },
     })
   end,
 }

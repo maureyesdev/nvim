@@ -48,7 +48,7 @@ return {
         end
 
         return branch
-      end
+      end,
     }
 
     local location = {
@@ -57,20 +57,20 @@ return {
     }
 
     local filename = {
-      'filename',
+      "filename",
       path = 1,
     }
 
     local lsp_info = {
       function()
-        local current_lsp = 'no lsp'
+        local current_lsp = "no lsp"
         local buf_ft = ""
         local clients
         if vim.fn.has("wsl") == 1 then
-          buf_ft = vim.bo.filetype;
+          buf_ft = vim.bo.filetype
           clients = vim.lsp.get_clients()
         else
-          buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+          buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
           clients = vim.lsp.get_active_clients()
         end
 
@@ -87,7 +87,6 @@ return {
         return current_lsp
       end,
       icon = " LSP:",
-
     }
 
     local spaces = function()
@@ -105,14 +104,14 @@ return {
       },
       sections = {
         lualine_a = {
-          mode
+          mode,
         },
         lualine_b = {
           filename,
         },
         lualine_c = {
           -- diagnostics
-          diff
+          diff,
         },
         lualine_x = {
           -- diff,

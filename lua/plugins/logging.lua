@@ -9,5 +9,5 @@ return {
     })
 
     vim.keymap.set("n", "<leader>ll", wrapper.wrap_under_cursor)
-  end
+  end,
 }

@@ -18,8 +18,8 @@ return {
           --     -- TODO: PENDING
           --   },
           -- }
-        }
-      }
+        },
+      },
     })
     telescope.load_extension("ui-select")
     telescope.load_extension("lazygit")
