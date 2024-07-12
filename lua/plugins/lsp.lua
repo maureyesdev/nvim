@@ -15,6 +15,7 @@ return {
           -- LSPs
           "lua_ls", -- lua
           "vtsls", -- js
+          "jsonls", -- json
           -- DAPs
           -- Linters
           -- Formatters
@@ -41,6 +42,10 @@ return {
       })
 
       lspconfig.vtsls.setup({
+        capabilities = capabilities,
+      })
+
+      lspconfig.jsonls.setup({
         capabilities = capabilities,
       })
     end,

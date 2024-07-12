@@ -11,8 +11,14 @@ return {
     config = function()
       local treesitter = require("nvim-treesitter.configs")
       treesitter.setup({
-        -- ensure_installed = { "javascript", "typescript", "python", "lua", "vim" },
-        ensure_installed = {},
+        ensure_installed = {
+          "javascript",
+          "typescript",
+          "python",
+          "lua",
+          "vim",
+          "json5",
+        },
         auto_install = true,
         indent = {
           enable = true,

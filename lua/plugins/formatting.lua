@@ -7,6 +7,7 @@ return {
       formatters_by_ft = {
         -- TODO: Add more formatters
         lua = { "stylua" },
+        json = { "prettier" },
       },
       format_on_save = {
         lsp_fallback = true,
