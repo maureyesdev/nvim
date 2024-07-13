@@ -182,3 +182,13 @@ keymap.set("n", "<leader>gp", function()
 end, opts)
 
 keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", opts)
+
+----------------------------------------------------------------------------
+-- FOLDING
+----------------------------------------------------------------------------
+vim.keymap.set("n", "<leader>]", function()
+  require("ufo").openAllFolds()
+end, {})
+vim.keymap.set("n", "<leader>[", function()
+  require("ufo").closeFoldsWith()
+end)

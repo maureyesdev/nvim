@@ -38,6 +38,12 @@ vim.opt.wrap = true -- display lines as one long line
 vim.opt.scrolloff = 12
 vim.opt.sidescrolloff = 12
 
+-- folding options
+vim.opt.foldcolumn = "0" -- To avoid viewing the folding context
+vim.opt.foldlevelstart = 99 -- To avoid collapsing the folding at start
+-- vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value ? Not sure if I need this
+-- vim.o.foldenable = true -- ? Not sure if I need this
+
 vim.opt.fillchars:append({ eob = " " }) -- To remove anoying ~ for empty lines or unused lines in editor file
 
 vim.opt.spelllang = "en_us"
