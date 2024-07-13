@@ -12,7 +12,7 @@
 - [x] Treesitter
 - [x] Closing pairs
 - [ ] Brackets pair colorized
-- [ ] Top sticky context
+- [x] Top sticky context
 - [x] Folding
 - [ ] Git
   - [x] Git Sign
