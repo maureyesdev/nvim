@@ -13,23 +13,24 @@
 - [x] Closing pairs
 - [ ] Brackets pair colorized
 - [ ] Top sticky context
+- [x] Folding
 - [ ] Git
-    - [x] Git Sign
-    - [x] Git UI - Lazygit
-    - [ ] Compare references
-    - [ ] Blame
+  - [x] Git Sign
+  - [x] Git UI - Lazygit
+  - [ ] Compare references
+  - [ ] Blame
 - [x] File explorer
 - [x] Finder - telescope
-    - [x] Find files
-    - [x] Find in current file
-    - [x] Find in current project directory
-    - [x] Code actions - telescope and lsp integration
-    - [x] Go to references - telescope and lsp integration
-    - [x] Go to definition - telescope and lsp integration
+  - [x] Find files
+  - [x] Find in current file
+  - [x] Find in current project directory
+  - [x] Code actions - telescope and lsp integration
+  - [x] Go to references - telescope and lsp integration
+  - [x] Go to definition - telescope and lsp integration
 - [x] Multi cursor
 - [ ] Debugger
-    - [ ] js
-    - [ ] python
+  - [ ] js
+  - [ ] python
 
 ## Default options
 
