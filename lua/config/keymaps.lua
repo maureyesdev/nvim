@@ -22,11 +22,11 @@ keymap.set("n", "<C-k>", "<C-w>k", opts)
 keymap.set("n", "<C-l>", "<C-w>l", opts)
 
 -- Ctrl + h | j | k | l FOR TMUX
-vim.api.nvim_set_keymap('n', '<C-h>', ':TmuxNavigateLeft<CR>', opts)
-vim.api.nvim_set_keymap('n', '<C-j>', ':TmuxNavigateDown<CR>', opts)
-vim.api.nvim_set_keymap('n', '<C-k>', ':TmuxNavigateUp<CR>', opts)
-vim.api.nvim_set_keymap('n', '<C-l>', ':TmuxNavigateRight<CR>', opts)
-vim.api.nvim_set_keymap('n', '<C-\\>', ':TmuxNavigatePrevious<CR>', opts)
+vim.api.nvim_set_keymap("n", "<C-h>", ":TmuxNavigateLeft<CR>", opts)
+vim.api.nvim_set_keymap("n", "<C-j>", ":TmuxNavigateDown<CR>", opts)
+vim.api.nvim_set_keymap("n", "<C-k>", ":TmuxNavigateUp<CR>", opts)
+vim.api.nvim_set_keymap("n", "<C-l>", ":TmuxNavigateRight<CR>", opts)
+vim.api.nvim_set_keymap("n", "<C-\\>", ":TmuxNavigatePrevious<CR>", opts)
 
 -- Resize with arrows
 keymap.set("n", "<C-Up>", ":resize +2<CR>", opts)
