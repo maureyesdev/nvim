@@ -27,14 +27,6 @@ return {
 
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
-        settings = {
-          Lua = {
-            completion = { callSnippet = "Replace" },
-            diagnostics = { globals = { "vim" } },
-            workspace = { checkThirdParty = false },
-            telemetry = { enable = false },
-          },
-        },
       })
 
       lspconfig.vtsls.setup({

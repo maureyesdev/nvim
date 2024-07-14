@@ -8,7 +8,7 @@
 - [x] Lazy as package manager
 - [x] LSP - Mason
 - [x] Completions
-- [ ] Neovim development with neodev
+- [x] Neovim development with lazydev
 - [x] Treesitter
 - [x] Closing pairs
 - [ ] Brackets pair colorized
