@@ -1,9 +1,21 @@
 return {
-  "rest-nvim/rest.nvim",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
+  {
+    "vhyrro/luarocks.nvim",
+    priority = 1000,
+    config = true,
+    opts = {
+      rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" },
+    },
   },
-  config = function()
-    require("rest-nvim").setup({})
-  end,
+  {
+    "rest-nvim/rest.nvim",
+    ft = "http",
+    dependencies = {
+      "luarocks.nvim",
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("rest-nvim").setup()
+    end,
+  },
 }
