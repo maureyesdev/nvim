@@ -1,4 +1,5 @@
-return {
+-- TODO: need to find out a way to toggle this
+local highlight_matching = {
   "RRethy/vim-illuminate",
   config = function()
     require("illuminate").configure({
@@ -49,3 +50,4 @@ return {
     })
   end,
 }
+return {}

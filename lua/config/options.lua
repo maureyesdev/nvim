@@ -5,6 +5,7 @@ vim.opt.inccommand = "split"
 vim.opt.termguicolors = true
 
 vim.opt.backup = false -- creates a backup file
+-- TODO: Need to create a validation in order to disable this if wsl
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
@@ -14,7 +15,7 @@ vim.opt.hlsearch = true -- highligh all matches on previous searhch patterns
 vim.opt.ignorecase = true -- ignore case in search pattern
 -- vim.opt.mouse = "a" -- allow the mouse to be used in neovim
 vim.opt.pumheight = 10 -- pop up meny height
-vim.opt.showmode = true -- like INSERT NORMAL VISUAL REPLACE
+vim.opt.showmode = false -- like INSERT NORMAL VISUAL REPLACE
 vim.opt.showtabline = 2 --always show tabs
 vim.opt.smartcase = true -- smart case
 vim.opt.smartindent = true -- make indenting smarter again
@@ -29,7 +30,7 @@ vim.opt.writebackup = false -- if a file is being edited by another program (or 
 vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
 vim.opt.tabstop = 2 -- insert 2 spaces for a tab
-vim.opt.cursorline = true -- highlight the current line
+vim.opt.cursorline = false -- highlight the current line
 vim.opt.number = true -- set numbered line
 vim.opt.relativenumber = true -- set relative numbered lines
 vim.opt.numberwidth = 4 -- set number column width to 2 {default 4}
