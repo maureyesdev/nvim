@@ -1,4 +1,5 @@
 -- TODO: Need to find a way for globals
+local variables = require("config.variables")
 vim.g.tmux_navigator_no_mappings = 0
 
 local opts = { noremap = true, silent = true }
@@ -29,10 +30,10 @@ vim.api.nvim_set_keymap("n", "<C-l>", ":TmuxNavigateRight<CR>", opts)
 vim.api.nvim_set_keymap("n", "<C-\\>", ":TmuxNavigatePrevious<CR>", opts)
 
 -- Resize with arrows
-keymap.set("n", "<C-Up>", ":resize +2<CR>", opts)
-keymap.set("n", "<C-Down>", ":resize -2<CR>", opts)
-keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+keymap.set("n", "<C-Up>", ":resize +20<CR>", opts)
+keymap.set("n", "<C-Down>", ":resize -20<CR>", opts)
+keymap.set("n", "<C-Left>", ":vertical resize -20<CR>", opts)
+keymap.set("n", "<C-Right>", ":vertical resize +20<CR>", opts)
 
 -- Navigate buffers -- ? CAN THIS BE <TAB> and <S-TAB> INSTEAD?
 keymap.set("n", "<S-l>", ":bnext<CR>", opts)
@@ -52,6 +53,20 @@ keymap.set("n", "<Leader>sv", ":vsplit<CR>", opts)
 -- Quit all
 keymap.set("n", "<leader>qq", "<cmd>qa<cr>", opts)
 
+if variables.normalized_line_wrap == true then
+  vim.keymap.set(
+    "n",
+    "k",
+    "v:count == 0 ? 'gk' : 'k'",
+    { expr = true, silent = true }
+  )
+  vim.keymap.set(
+    "n",
+    "j",
+    "v:count == 0 ? 'gj' : 'j'",
+    { expr = true, silent = true }
+  )
+end
 ----------------------------------------------------------------------------
 -- INSERT
 ----------------------------------------------------------------------------

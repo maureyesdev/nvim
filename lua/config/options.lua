@@ -5,7 +5,6 @@ vim.opt.inccommand = "split"
 vim.opt.termguicolors = true
 
 vim.opt.backup = false -- creates a backup file
--- TODO: Need to create a validation in order to disable this if wsl
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
@@ -19,6 +18,10 @@ vim.opt.showmode = false -- like INSERT NORMAL VISUAL REPLACE
 vim.opt.showtabline = 2 --always show tabs
 vim.opt.smartcase = true -- smart case
 vim.opt.smartindent = true -- make indenting smarter again
+-- ? Would it be possible to use this to recognize the language and set the appropriate indent?
+vim.opt.showbreak = string.rep(" ", 3) -- Make it so that long lines wrap smartly
+vim.opt.linebreak = true -- wrap lines at convenient points
+vim.opt.breakindent = true -- indent wrapped lines
 vim.opt.splitbelow = true -- force all horizontal splits to go below current window
 vim.opt.splitright = true -- force all vertical splits to go right
 vim.opt.swapfile = false -- creates a swapfile
@@ -26,7 +29,7 @@ vim.opt.termguicolors = true -- set term gui colors (most terminals support this
 vim.opt.timeoutlen = 1000 -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.undofile = true -- enable persistent undo
 vim.opt.updatetime = 300 -- faster completion (4000ms default)
-vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edite
+vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edit
 vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
 vim.opt.tabstop = 2 -- insert 2 spaces for a tab
