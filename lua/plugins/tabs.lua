@@ -1,4 +1,4 @@
-return {
+local tabline = {
   "tamton-aquib/staline.nvim",
   config = function()
     require("stabline").setup({
@@ -23,3 +23,5 @@ return {
     })
   end,
 }
+
+return {}
