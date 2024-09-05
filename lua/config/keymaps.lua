@@ -111,23 +111,23 @@ keymap.set("x", "K", ":move '<-2<CR>gv-gv", opts)
 ----------------------------------------------------------------------------
 -- Description: Find files in current directory
 -- Keymap: leader + p
-keymap.set("n", "<leader>p", function()
+keymap.set("n", "<leader>pp", function()
   require("telescope.builtin").find_files(
-    require("telescope.themes").get_dropdown({ previewer = false })
+    require("telescope.themes").get_ivy({ previewer = false })
   )
 end, opts)
 
 -- Description: Search input in current directory files
 -- Keymap: leader + ff
 keymap.set("n", "<leader>ff", function()
-  require("telescope.builtin").live_grep({ theme = "ivy" })
+  require("telescope.builtin").live_grep(require("telescope.themes").get_ivy())
 end, opts)
 
 -- Description: Search input in current file
 -- Keymap: leader + f + s
 keymap.set("n", "<leader>fs", function()
   require("telescope.builtin").current_buffer_fuzzy_find(
-    require("telescope.themes").get_dropdown({ previewer = false })
+    require("telescope.themes").get_ivy({ previewer = false })
   )
 end, opts)
 
@@ -140,18 +140,22 @@ end, opts)
 -- Description: Go to references
 -- Keymap: leader + g + r
 keymap.set("n", "<leader>gr", function()
-  require("telescope.builtin").lsp_references()
+  require("telescope.builtin").lsp_references(
+    require("telescope.themes").get_ivy()
+  )
 end, opts)
 
 -- Description: Go to symbol
 -- Keymap: leader + g + s
 keymap.set("n", "<leader>gs", function()
-  require("telescope.builtin").lsp_document_symbols()
+  require("telescope.builtin").lsp_document_symbols(
+    require("telescope.themes").get_ivy({})
+  )
 end, opts)
 
 -- Description: Show hover specification
--- Keymap: leader + k
-keymap.set("n", "<leader>k", function()
+-- Keymap: shift + k => K => Upper case k
+keymap.set("n", "K", function()
   vim.lsp.buf.hover()
 end, opts)
 
@@ -179,14 +183,25 @@ end, opts)
 -- LSP
 ----------------------------------------------------------------------------
 keymap.set("n", "<leader>cr", function()
-  require("renamer").rename()
+  require("renamer").rename({})
 end, opts)
 
 ----------------------------------------------------------------------------
 -- NEO TREE
 ----------------------------------------------------------------------------
-keymap.set("n", "<leader>e", function()
-  require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+keymap.set("n", "<leader>ee", function()
+  require("neo-tree.command").execute({
+    toggle = true,
+    -- dir = vim.loop.cwd(),
+  })
+end, opts)
+
+keymap.set("n", "<leader>eb", function()
+  require("neo-tree.command").execute({
+    toggle = true,
+    -- dir = vim.loop.cwd(),
+    source = "buffers",
+  })
 end, opts)
 
 ----------------------------------------------------------------------------
@@ -221,3 +236,7 @@ end)
 vim.keymap.set("n", "<leader>cc", function()
   require("treesitter-context").go_to_context(vim.v.count1)
 end, { silent = true })
+
+vim.keymap.set("n", "<leader>rr", function()
+  require("hedwig").run()
+end, { noremap = true, silent = true })

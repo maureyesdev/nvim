@@ -11,13 +11,6 @@ return {
       extensions = {
         ["ui-select"] = {
           require("telescope.themes").get_dropdown({}),
-          -- -- pseudo code / specification for writing custom displays, like the one
-          -- -- for "codeactions"
-          -- specific_opts = {
-          --   codeactions = {
-          --     -- TODO: PENDING
-          --   },
-          -- }
         },
       },
     })
