@@ -1,9 +1,5 @@
 require("config")
 
--- TODO: Need to find out a better place for this
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-
 -- TODO: NEED TO FIND A BETTER FILE TO ADD THIS IN
 -- Utility in order to highlight when copy
 vim.api.nvim_create_autocmd("TextYankPost", {
