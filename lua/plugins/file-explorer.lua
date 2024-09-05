@@ -7,12 +7,15 @@ return {
     "MunifTanjim/nui.nvim",
   },
   config = function()
-    local neo_tree = require("neo-tree")
-    local neo_tree_command = require("neo-tree.command")
-    neo_tree.setup({
+    require("neo-tree").setup({
       window = {
-        -- position = "right",
-        position = "float",
+        position = "right",
+        width = 40,
+      },
+      filesystem = {
+        follow_current_file = {
+          enabled = true, -- This will find and focus the file in the active buffer every time
+        },
       },
       event_handlers = {
         -- TODO: Need to find a better place to put his
@@ -20,7 +23,7 @@ return {
         {
           event = "file_opened",
           handler = function()
-            neo_tree_command.execute({ action = "close" })
+            require("neo-tree.command").execute({ action = "close" })
           end,
         },
       },
