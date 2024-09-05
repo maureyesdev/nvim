@@ -112,45 +112,37 @@ keymap.set("x", "K", ":move '<-2<CR>gv-gv", opts)
 -- Description: Find files in current directory
 -- Keymap: leader + p
 keymap.set("n", "<leader>pp", function()
-  require("telescope.builtin").find_files(
-    require("telescope.themes").get_ivy({ previewer = false })
-  )
+  require("telescope.builtin").find_files()
 end, opts)
 
 -- Description: Search input in current directory files
 -- Keymap: leader + ff
 keymap.set("n", "<leader>ff", function()
-  require("telescope.builtin").live_grep(require("telescope.themes").get_ivy())
+  require("telescope.builtin").live_grep()
 end, opts)
 
 -- Description: Search input in current file
 -- Keymap: leader + f + s
 keymap.set("n", "<leader>fs", function()
-  require("telescope.builtin").current_buffer_fuzzy_find(
-    require("telescope.themes").get_ivy({ previewer = false })
-  )
+  require("telescope.builtin").current_buffer_fuzzy_find()
 end, opts)
 
 -- Description: Go to definition
 -- Keymap: leader + g + d
 keymap.set("n", "<leader>gd", function()
-  require("telescope.builtin").lsp_definitions({ reuse_win = true })
+  require("telescope.builtin").lsp_definitions()
 end, opts)
 
 -- Description: Go to references
 -- Keymap: leader + g + r
 keymap.set("n", "<leader>gr", function()
-  require("telescope.builtin").lsp_references(
-    require("telescope.themes").get_ivy()
-  )
+  require("telescope.builtin").lsp_references()
 end, opts)
 
 -- Description: Go to symbol
 -- Keymap: leader + g + s
 keymap.set("n", "<leader>gs", function()
-  require("telescope.builtin").lsp_document_symbols(
-    require("telescope.themes").get_ivy({})
-  )
+  require("telescope.builtin").lsp_document_symbols()
 end, opts)
 
 -- Description: Show hover specification
@@ -174,9 +166,7 @@ end, opts)
 -- Description: Show spell suggestions
 -- Keymap: leader + s + s
 keymap.set("n", "<leader>ss", function()
-  require("telescope.builtin").spell_suggest(
-    require("telescope.themes").get_cursor({})
-  )
+  require("telescope.builtin").spell_suggest()
 end, opts)
 
 ----------------------------------------------------------------------------
