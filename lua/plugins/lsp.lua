@@ -66,4 +66,8 @@ return {
       require("renamer").setup({})
     end,
   },
+  {
+    "j-hui/fidget.nvim",
+    opts = {},
+  },
 }
