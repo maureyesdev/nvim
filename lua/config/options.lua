@@ -15,7 +15,7 @@ vim.opt.ignorecase = true -- ignore case in search pattern
 -- vim.opt.mouse = "a" -- allow the mouse to be used in neovim
 vim.opt.pumheight = 10 -- pop up meny height
 vim.opt.showmode = false -- like INSERT NORMAL VISUAL REPLACE
-vim.opt.showtabline = 0 -- tabs control => 0: never, 1: always, 2: only when more than one tab
+vim.opt.showtabline = 2 -- tabs control => 0: never, 1: always, 2: only when more than one tab
 vim.opt.smartcase = true -- smart case
 vim.opt.smartindent = true -- make indenting smarter again
 -- ? Would it be possible to use this to recognize the language and set the appropriate indent?

@@ -24,4 +24,4 @@ local tabline = {
   end,
 }
 
-return {}
+return tabline
