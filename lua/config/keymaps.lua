@@ -1,4 +1,3 @@
--- TODO: Need to find a way for globals
 local variables = require("config.variables")
 vim.g.tmux_navigator_no_mappings = 0
 
@@ -35,7 +34,6 @@ keymap.set("n", "<C-Down>", ":resize -20<CR>", opts)
 keymap.set("n", "<C-Left>", ":vertical resize -20<CR>", opts)
 keymap.set("n", "<C-Right>", ":vertical resize +20<CR>", opts)
 
--- Navigate buffers -- ? CAN THIS BE <TAB> and <S-TAB> INSTEAD?
 keymap.set("n", "<S-l>", ":bnext<CR>", opts)
 keymap.set("n", "<S-h>", ":bprevious<CR>", opts)
 
@@ -53,6 +51,7 @@ keymap.set("n", "<Leader>sv", ":vsplit<CR>", opts)
 -- Quit all
 keymap.set("n", "<leader>qq", "<cmd>qa<cr>", opts)
 
+-- Utility to treat wrap line as independent line when going down and up
 if variables.normalized_line_wrap == true then
   vim.keymap.set(
     "n",
@@ -67,11 +66,12 @@ if variables.normalized_line_wrap == true then
     { expr = true, silent = true }
   )
 end
+
 ----------------------------------------------------------------------------
 -- INSERT
 ----------------------------------------------------------------------------
 -- Press fd fast to escape
--- keymap.set("i", "fd", "<ESC>", opts)
+keymap.set("i", "fd", "<ESC>", opts) -- ? Am I really using this?
 
 ----------------------------------------------------------------------------
 -- VISUAL
@@ -84,7 +84,8 @@ keymap.set("v", "<", "<gv", opts)
 keymap.set("v", ">", ">gv", opts)
 
 -- For regular copy and paste behavior, Neovim will override the buffer text if you copy and use dd.
--- With this it will still conserve the previus buffer text
+-- With this it will still conserve the previous buffer text
+-- TODO: Need to double check this, 'cause I thing is not working
 keymap.set("v", "p", '"_dP', opts)
 
 ----------------------------------------------------------------------------
@@ -111,7 +112,7 @@ keymap.set("x", "K", ":move '<-2<CR>gv-gv", opts)
 ----------------------------------------------------------------------------
 -- Description: Find files in current directory
 -- Keymap: leader + p
-keymap.set("n", "<leader>pp", function()
+keymap.set("n", "<leader>p", function()
   require("telescope.builtin").find_files()
 end, opts)
 
@@ -145,6 +146,25 @@ keymap.set("n", "<leader>gs", function()
   require("telescope.builtin").lsp_document_symbols()
 end, opts)
 
+-- Description: Show spell suggestions
+-- Keymap: leader + s + s
+keymap.set("n", "<leader>ss", function()
+  require("telescope.builtin").spell_suggest()
+end, opts)
+
+----------------------------------------------------------------------------
+-- LSP
+----------------------------------------------------------------------------
+keymap.set("n", "<leader>cr", function()
+  require("renamer").rename({})
+end, opts)
+
+-- Description: Show line diagnostics
+-- Keymap: leader + s + d
+keymap.set("n", "<leader>sd", function()
+  vim.diagnostic.open_float()
+end, opts)
+
 -- Description: Show hover specification
 -- Keymap: shift + k => K => Upper case k
 keymap.set("n", "K", function()
@@ -159,39 +179,39 @@ end, opts)
 
 -- Description: Rename current input
 -- Keymap: leader + c + r
-keymap.set("n", "<leader>cr", function()
-  vim.lsp.buf.rename()
-end, opts)
+-- keymap.set("n", "<leader>cr", function()
+--   vim.lsp.buf.rename()
+-- end, opts)
 
--- Description: Show spell suggestions
--- Keymap: leader + s + s
-keymap.set("n", "<leader>ss", function()
-  require("telescope.builtin").spell_suggest()
-end, opts)
-
-----------------------------------------------------------------------------
--- LSP
-----------------------------------------------------------------------------
-keymap.set("n", "<leader>cr", function()
-  require("renamer").rename({})
-end, opts)
+-- TODO: Figure out how to make this work with function and not cmd to maintain consistency
+-- Description: Show diagnostics
+-- Keymap: leader + x + x
+keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", opts)
 
 ----------------------------------------------------------------------------
 -- NEO TREE
 ----------------------------------------------------------------------------
+-- Description: Toggle File explorer
+-- Keymap: leader + ee
 keymap.set("n", "<leader>ee", function()
   require("neo-tree.command").execute({
     toggle = true,
-    -- dir = vim.loop.cwd(),
   })
 end, opts)
 
+-- Description: Toggle opened buffers
+-- Keymap: leader + eb
 keymap.set("n", "<leader>eb", function()
   require("neo-tree.command").execute({
     toggle = true,
-    -- dir = vim.loop.cwd(),
     source = "buffers",
   })
+end, opts)
+
+-- Description: Toggle git status
+-- Keymap: leader + e + g
+keymap.set("n", "<leader>eg", function()
+  require("neo-tree.command").execute({ toggle = true, source = "git_status" })
 end, opts)
 
 ----------------------------------------------------------------------------
@@ -208,7 +228,7 @@ keymap.set("n", "<leader>gp", function()
   require("gitsigns").preview_hunk()
 end, opts)
 
-keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", opts)
+keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>", opts)
 
 ----------------------------------------------------------------------------
 -- FOLDING
@@ -227,6 +247,7 @@ vim.keymap.set("n", "<leader>cc", function()
   require("treesitter-context").go_to_context(vim.v.count1)
 end, { silent = true })
 
-vim.keymap.set("n", "<leader>rr", function()
-  require("hedwig").run()
-end, { noremap = true, silent = true })
+-- TODO: Under construction
+-- vim.keymap.set("n", "<leader>rr", function()
+--   require("hedwig").run()
+-- end, { noremap = true, silent = true })
