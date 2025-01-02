@@ -152,6 +152,12 @@ keymap.set("n", "<leader>ss", function()
   require("telescope.builtin").spell_suggest()
 end, opts)
 
+-- Description: live grep with arguments
+-- Keymap: leader + f + F
+keymap.set("n", "<leader>fF", function()
+  require("telescope").extensions.live_grep_args.live_grep_args()
+end, opts)
+
 ----------------------------------------------------------------------------
 -- LSP
 ----------------------------------------------------------------------------
