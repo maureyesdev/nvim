@@ -78,3 +78,5 @@ vim.opt.laststatus = 3
 vim.opt.colorcolumn = "80"
 -- enables incremental searching in Neovim—meaning you see matches as you type, rather than waiting until you hit <Enter>
 vim.opt.incsearch = true
+-- hide ~ on empty lines for a cleaner UI
+vim.opt.fillchars:append { eob = " " }
