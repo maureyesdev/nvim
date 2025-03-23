@@ -1,0 +1,4 @@
+-- Add keymaps here with `vim.keymap.set`
+--
+-- example
+-- vim.keymap.set("n", "<Space>", "<Nop>")
