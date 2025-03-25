@@ -1,0 +1,6 @@
+-- Add utilities inside this folder.
+-- This file should not contain nothing more than the require of the modules of
+-- this folder
+--
+-- example
+-- functions, types, classes
