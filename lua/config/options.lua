@@ -71,7 +71,7 @@ vim.opt.wrap = true
 -- sets the minimum number of lines to keep above and below the cursor when scrolling vertically
 vim.opt.scrolloff = 8
 -- sets the minimum number of columns to keep to the left and right of the cursor when scrolling sideways
-vim.opt.sidescrolloff  = 8
+vim.opt.sidescrolloff = 8
 -- controls when the statusline is shown
 vim.opt.laststatus = 3
 -- adds a vertical guide line at a specific column
@@ -79,4 +79,4 @@ vim.opt.colorcolumn = "80"
 -- enables incremental searching in Neovim—meaning you see matches as you type, rather than waiting until you hit <Enter>
 vim.opt.incsearch = true
 -- hide ~ on empty lines for a cleaner UI
-vim.opt.fillchars:append { eob = " " }
+vim.opt.fillchars:append({ eob = " " })
