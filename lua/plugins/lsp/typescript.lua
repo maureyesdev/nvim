@@ -1,21 +1,12 @@
 return {
   -----------------------------------------------------------------------------
-  -- Parser (syntax highlight)
+  -- Syntax highlight
   -----------------------------------------------------------------------------
   {
     "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    opts = {
-      ensure_installed = {},
-      auto_install = false,
-      indent = { enable = true },
-      highlight = { enable = true },
-      modules = {},
-      sync_install = true,
-      ignore_install = {},
-    },
-    config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
+    opts = function(_, opts)
+      opts.ensure_installed = opts.ensure_installed or {}
+      vim.list_extend(opts.ensure_installed, { "javascript", "typescript" })
     end,
   },
 
@@ -24,31 +15,26 @@ return {
   -----------------------------------------------------------------------------
   {
     "stevearc/conform.nvim",
-    opts = {
-      formatters_by_ft = {},
-      format_on_save = {
-        timeout_ms = 2500,
-        lsp_format = "fallback",
-      },
-    },
+    opts = function(_, opts)
+      opts.formatters_by_ft =
+        vim.tbl_deep_extend("force", opts.formatters_by_ft, {
+          javascript = { "prettier" },
+          typescript = { "prettier" },
+          javascriptreact = { "prettier" },
+          typescriptreact = { "prettier" },
+        })
+    end,
   },
 
   -----------------------------------------------------------------------------
-  -- LSP Registry
-  -----------------------------------------------------------------------------
-  {
-    "williamboman/mason.nvim",
-    opts = {},
-  },
-
-  -----------------------------------------------------------------------------
-  -- LSP ensure installation
+  -- LSP installation
   -----------------------------------------------------------------------------
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    opts = {
-      ensure_installed = {},
-    },
+    opts = function(_, opts)
+      opts.ensure_installed = opts.ensure_installed or {}
+      vim.list_extend(opts.ensure_installed, { "vtsls", "prettier" })
+    end,
   },
 
   -----------------------------------------------------------------------------
@@ -56,6 +42,9 @@ return {
   -----------------------------------------------------------------------------
   {
     "neovim/nvim-lspconfig",
-    dependencies = { { "saghen/blink.cmp" } },
+    opts = function()
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
+      require("lspconfig").vtsls.setup({ capabilities = capabilities })
+    end,
   },
 }
