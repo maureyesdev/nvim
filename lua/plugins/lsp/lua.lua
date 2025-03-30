@@ -48,6 +48,7 @@ return {
         ft = "lua",
         opts = {
           library = {
+            { path = "vim.runtime" },
             { path = "${3rd}/luv/library", words = { "vim%.uv" } },
           },
         },
