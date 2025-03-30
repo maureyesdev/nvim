@@ -29,7 +29,7 @@ vim.opt.pumheight = 10
 -- controls whether Neovim displays the current mode
 vim.opt.showmode = true
 -- controls when the tab line is visible
-vim.opt.showtabline = 2
+vim.opt.showtabline = 0
 -- makes Neovim case-insensitive when searching
 vim.opt.ignorecase = true
 -- If your search contains any uppercase letter, it becomes case-sensitive. (NOTE: it only works when ignorecase is enabled)
@@ -80,3 +80,5 @@ vim.opt.colorcolumn = "80"
 vim.opt.incsearch = true
 -- hide ~ on empty lines for a cleaner UI
 vim.opt.fillchars:append({ eob = " " })
+-- enables the window bar and determines its contents
+vim.opt.winbar = "this is being control by winbar_updater autocmd"
