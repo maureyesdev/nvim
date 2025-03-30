@@ -1,5 +1,8 @@
 return {
   "folke/snacks.nvim",
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  },
   priority = 1000,
   lazy = false,
   ---@module 'snacks'
@@ -54,7 +57,13 @@ return {
       refresh = 50, -- refresh at most every 50ms
     },
     notify = { enabled = false },
-    picker = { enabled = true },
+    picker = {
+      sources = {
+        explorer = {
+          auto_close = true,
+        },
+      },
+    },
     profiler = { enabled = false },
     quickfile = { enabled = false },
     rename = { enabled = false },
