@@ -20,6 +20,8 @@ return {
       nerd_font_variant = "mono",
     },
     cmdline = {
+      -- TODO: Need nvim-cmp behavior
+      enabled = false,
       keymap = {
         ["<Tab>"] = { "show_and_insert", "accept" },
         ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
