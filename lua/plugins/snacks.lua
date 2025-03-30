@@ -11,7 +11,13 @@ return {
     animate = { enabled = false },
     bigfile = { enabled = false },
     bufdelete = { enabled = false },
-    dashboard = { enabled = false },
+    dashboard = {
+      sections = {
+        { section = "header" },
+        -- { section = "keys", gap = 1, padding = 1 },
+        { section = "startup" },
+      },
+    },
     debug = { enabled = false },
     dim = { enabled = false },
     explorer = { enabled = false },
