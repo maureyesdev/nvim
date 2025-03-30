@@ -157,9 +157,17 @@ keymap.set("n", "<leader>ca", function()
   vim.lsp.buf.code_action()
 end, opts)
 
--- keymap.set("n", "<leader>cr", function()
--- pending with renamer
--- end, opts)
+vim.keymap.set("n", "<leader>cr", function()
+  local curr_name = vim.fn.expand("<cword>")
+  require("snacks.input").input({
+    prompt = "Rename to:",
+    default = curr_name,
+  }, function(new_name)
+    if new_name and #new_name > 0 and new_name ~= curr_name then
+      vim.lsp.buf.rename(new_name)
+    end
+  end)
+end, { desc = "LSP: Rename with Snacks input" })
 
 -- This behavior is the neovim default
 keymap.set("n", "K", function()
