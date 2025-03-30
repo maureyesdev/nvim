@@ -8,6 +8,11 @@ keymap.set("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- DISABLING F1 key
+vim.keymap.set({ "n", "i", "v" }, "<F1>", "<Nop>", { silent = true })
+-- DISABLING default grep for snacks
+vim.keymap.set({ "n" }, "<leader>gg", "<Nop>", { silent = true })
+
 ----------------------------------------------------------------------------
 -- NORMAL
 ----------------------------------------------------------------------------
@@ -86,3 +91,107 @@ keymap.set("x", "K", ":move '<-2<CR>gv-gv", opts)
 ----------------------------------------------------------------------------
 -- COMMAND
 ----------------------------------------------------------------------------
+
+----------------------------------------------------------------------------
+-- SNACKS
+----------------------------------------------------------------------------
+keymap.set("n", "<leader>sp", function()
+  require("snacks").picker({ layout = { preset = "vscode" } })
+end, opts)
+
+keymap.set("n", "<leader>xx", function()
+  require("snacks").picker.diagnostics({
+    -- main means that the preview will get disabled
+    layout = { preset = "ivy", preview = "main" },
+  })
+end, opts)
+
+keymap.set("n", "<leader>::", function()
+  require("snacks").picker.commands({ layout = { preset = "vscode" } })
+end, opts)
+
+keymap.set("n", "<leader>ee", function()
+  require("snacks").picker.explorer()
+end, opts)
+
+keymap.set("n", "<leader>bb", function()
+  require("snacks").picker.buffers({ layout = { preset = "vscode" } })
+end, opts)
+
+keymap.set("n", "<leader>gm", function()
+  require("snacks").lazygit()
+end, opts)
+
+-- keymap.set("n", "<leader>gd", function()
+--   require("snacks").picker.git_diff({ layout = "vertical" })
+-- end, opts)
+
+keymap.set("n", "<leader>gb", function()
+  require("snacks").picker.git_branches({ layout = { preset = "vscode" } })
+end, opts)
+
+keymap.set("n", "<leader>gs", function()
+  require("snacks").picker.git_status({ layout = { preset = "vscode" } })
+end, opts)
+
+-- Need to discontinue this and replace it by below keymap
+keymap.set("n", "<leader>pp", function()
+  require("snacks").picker.files({ layout = { preset = "vscode" } })
+end, opts)
+
+keymap.set("n", "<leader>ff", function()
+  require("snacks").picker.files({ layout = { preset = "vscode" } })
+end, opts)
+
+keymap.set("n", "<leader>fg", function()
+  require("snacks").picker.grep({ layout = { preset = "ivy" } })
+end, opts)
+
+keymap.set("n", "<leader>fl", function()
+  require("snacks").picker.lines({
+    layout = { preset = "vscode" },
+  })
+end, opts)
+
+keymap.set("n", "<leader>ca", function()
+  vim.lsp.buf.code_action()
+end, opts)
+
+-- keymap.set("n", "<leader>cr", function()
+-- pending with renamer
+-- end, opts)
+
+-- This behavior is the neovim default
+keymap.set("n", "K", function()
+  vim.lsp.buf.hover()
+end, opts)
+
+keymap.set("n", "<leader>lh", function()
+  vim.lsp.buf.hover()
+end, opts)
+
+keymap.set("n", "<leader>le", function()
+  vim.diagnostic.open_float()
+end, opts)
+
+keymap.set("n", "<leader>ls", function()
+  require("snacks").picker.lsp_symbols({ layout = { preset = "vscode" } })
+end, opts)
+
+keymap.set("n", "<leader>lr", function()
+  require("snacks").picker.lsp_references({
+    -- TODO: To be defined
+    -- layout = { preset = "pending" },
+  })
+end, opts)
+
+keymap.set("n", "<leader>li", function()
+  require("snacks").picker.lsp_implementations({
+    -- TODO: To be defined
+    -- layout = { preset = "pending" },
+  })
+end, opts)
+
+keymap.set("n", "<leader>ld", function()
+  require("snacks").picker.lsp_definitions()
+end, opts)

@@ -5,9 +5,6 @@ return {
   ---@module 'snacks'
   ---@type snacks.Config
   opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
     animate = { enabled = false },
     bigfile = { enabled = false },
     bufdelete = { enabled = false },
@@ -21,7 +18,7 @@ return {
     indent = { enabled = false },
     input = { enabled = false },
     layout = { enabled = false },
-    lazygit = { enabled = false },
+    lazygit = { enabled = true },
     notifier = {
       timeout = 3000, -- default timeout in ms
       width = { min = 40, max = 0.4 },
@@ -57,7 +54,7 @@ return {
       refresh = 50, -- refresh at most every 50ms
     },
     notify = { enabled = false },
-    picker = { enabled = false },
+    picker = { enabled = true },
     profiler = { enabled = false },
     quickfile = { enabled = false },
     rename = { enabled = false },
