@@ -1,4 +1,5 @@
 return {
+
   "folke/snacks.nvim",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
@@ -35,7 +36,7 @@ return {
       -- editor margin to keep free. tabline and statusline are taken into account automatically
       -- margin = { top = 10, right = 1, bottom = 0 },
       -- margin = { right = 1, bottom = 10 },
-      margin = { top = 0, right = 1, bottom = 1 },
+      margin = { top = 0, right = 1, bottom = 0 },
       padding = true, -- add 1 cell of left/right padding to the notification window
       sort = { "level", "added" }, -- sort by level and time
       -- minimum log level to display. TRACE is the lowest

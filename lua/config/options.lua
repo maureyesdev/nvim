@@ -13,7 +13,7 @@ vim.opt.backup = false
 -- configures how Neovim interacts with your system clipboard—so you can copy/paste between Neovim and other apps
 vim.opt.clipboard = "unnamedplus"
 -- controls the height of the command line area
-vim.opt.cmdheight = 1
+vim.opt.cmdheight = 0
 -- configures how autocomplete menus behave especially, for insert mode completions like LSP, snippets, and nvim-cmp
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 -- controls how concealed text is displayed
@@ -27,7 +27,7 @@ vim.opt.mouse = "a"
 -- sets the maximum number of items shown in the popup menu (completion menu)
 vim.opt.pumheight = 10
 -- controls whether Neovim displays the current mode
-vim.opt.showmode = true
+vim.opt.showmode = false
 -- controls when the tab line is visible
 vim.opt.showtabline = 0
 -- makes Neovim case-insensitive when searching
