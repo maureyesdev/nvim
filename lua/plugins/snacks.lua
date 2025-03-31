@@ -69,6 +69,20 @@ return {
         explorer = {
           auto_close = true,
         },
+        buffers = {
+          -- start in normal mode
+          on_show = function()
+            vim.cmd.stopinsert()
+          end,
+          win = {
+            input = {
+              keys = {
+                ["d"] = "bufdelete",
+              },
+            },
+            list = { keys = { ["d"] = "bufdelete" } },
+          },
+        },
       },
     },
     profiler = { enabled = false },
