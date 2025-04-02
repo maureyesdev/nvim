@@ -26,6 +26,8 @@ return {
     gitbrowse = { enabled = false },
     image = { enabled = false },
     indent = { enabled = false },
+    -- such indent blankline
+    indent = { enabled = true },
     input = { enabled = false },
     layout = { enabled = false },
     lazygit = { enabled = true },
