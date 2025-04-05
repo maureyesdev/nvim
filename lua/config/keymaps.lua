@@ -210,3 +210,7 @@ end, opts)
 keymap.set("n", "<leader>ld", function()
   require("snacks").picker.lsp_definitions()
 end, opts)
+
+vim.keymap.set("n", "<leader>cc", function()
+  require("treesitter-context").go_to_context(vim.v.count1)
+end, opts)

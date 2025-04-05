@@ -3,20 +3,35 @@ return {
   -- Parser (syntax highlight)
   -----------------------------------------------------------------------------
   {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    opts = {
-      ensure_installed = {},
-      auto_install = false,
-      indent = { enable = true },
-      highlight = { enable = true },
-      modules = {},
-      sync_install = true,
-      ignore_install = {},
+    {
+      "nvim-treesitter/nvim-treesitter-context",
+      opts = { max_lines = 3 },
     },
-    config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
-    end,
+    {
+      "nvim-treesitter/nvim-treesitter",
+      build = ":TSUpdate",
+      opts = {
+        ensure_installed = {},
+        auto_install = false,
+        indent = { enable = true },
+        highlight = { enable = true },
+        modules = {},
+        sync_install = true,
+        ignore_install = {},
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = "<C-space>",
+            node_incremental = "<C-space>",
+            scope_incremental = false,
+            node_decremental = "<bs>",
+          },
+        },
+      },
+      config = function(_, opts)
+        require("nvim-treesitter.configs").setup(opts)
+      end,
+    },
   },
 
   -----------------------------------------------------------------------------
