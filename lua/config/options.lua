@@ -81,4 +81,4 @@ vim.opt.incsearch = true
 -- hide ~ on empty lines for a cleaner UI
 vim.opt.fillchars:append({ eob = " " })
 -- enables the window bar and determines its contents
-vim.opt.winbar = "this is being control by winbar_updater autocmd"
+vim.opt.winbar = ""

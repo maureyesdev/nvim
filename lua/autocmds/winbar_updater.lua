@@ -1,5 +1,3 @@
--- TODO: NEED TO GET BACK TO THIS FILE TO REFACTOR
--- getting the
 local color_surface = "#0f0d1a"
 local color_gold = "#f6c177"
 local color_pine = "#31748f"
@@ -33,14 +31,56 @@ local function get_buffer_count()
   return vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 }))
 end
 
+local function shorten_path(path)
+  local segments = vim.split(path, "/")
+  local shortened = {}
+
+  for i = 1, #segments do
+    local segment = segments[i]
+    if i == 1 then
+      table.insert(shortened, segment) -- ~ or empty root
+    elseif i == #segments then
+      table.insert(shortened, segment) -- keep final dir/file
+    elseif #segment > 0 then
+      table.insert(shortened, segment:sub(1, 1)) -- collapse to first char
+    end
+  end
+
+  return table.concat(shortened, "/")
+end
+
 local function update_winbar()
-  local home_replaced = get_winbar_path()
+  local winid = vim.api.nvim_get_current_win()
+
+  -- Skip floating
+  local config = vim.api.nvim_win_get_config(winid)
+  if config.relative ~= "" then
+    return
+  end
+
+  local file_path = get_winbar_path()
+  local short_path = shorten_path(file_path)
   local buffer_count = get_buffer_count()
-  vim.opt.winbar = table.concat({
+  local file_name = vim.fn.expand("%:t")
+
+  local full = table.concat({
     "%#BufferCount#(" .. buffer_count .. ") ",
-    "%#FileName#%m " .. vim.fn.expand("%:t"),
-    "%*%=%#FilePath# " .. home_replaced,
+    "%#FileName#%m " .. file_name,
+    "%*%=%#FilePath# " .. file_path,
   })
+
+  local short = table.concat({
+    "%#BufferCount#(" .. buffer_count .. ") ",
+    "%#FileName#%m " .. file_name,
+    "%*%=%#FilePath# " .. short_path,
+  })
+
+  local win_width = vim.api.nvim_win_get_width(winid)
+  local winbar = vim.fn.strdisplaywidth(full) > win_width and short or full
+
+  pcall(function()
+    vim.wo[winid].winbar = winbar
+  end)
 end
 
 vim.api.nvim_create_autocmd({ "BufEnter", "ModeChanged" }, {
