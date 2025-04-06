@@ -218,3 +218,7 @@ end, opts)
 vim.keymap.set("n", "<localleader>ll", function()
   require("logsitter").log()
 end, opts)
+
+vim.keymap.set("n", "<localleader>jj", function()
+  require("flash").jump()
+end, opts)
