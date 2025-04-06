@@ -1,3 +1,17 @@
+-- need to move to utils
+local does_buffer_has_lsp_attached = function()
+  local has_lsp = not vim.tbl_isempty(vim.lsp.get_clients({ bufnr = 0 }))
+
+  local ok, conform = pcall(require, "conform")
+  local has_formatter = false
+  if ok then
+    local formatters = conform.list_formatters_for_buffer()
+    has_formatter = not vim.tbl_isempty(formatters)
+  end
+
+  return has_lsp or has_formatter
+end
+
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -86,6 +100,7 @@ return {
             colored = true,
             update_in_insert = false,
             always_visible = true,
+            cond = does_buffer_has_lsp_attached,
           },
         },
         lualine_c = {
@@ -144,19 +159,7 @@ return {
 
               return lsp .. table.concat(lsp_names, ", ")
             end,
-            cond = function()
-              local has_lsp =
-                not vim.tbl_isempty(vim.lsp.get_clients({ bufnr = 0 }))
-
-              local ok, conform = pcall(require, "conform")
-              local has_formatter = false
-              if ok then
-                local formatters = conform.list_formatters_for_buffer()
-                has_formatter = not vim.tbl_isempty(formatters)
-              end
-
-              return has_lsp or has_formatter
-            end,
+            cond = does_buffer_has_lsp_attached,
           },
         },
       },
