@@ -1,3 +1,8 @@
+-- Is this the right place of doing this?
+local start_on_normal_mode = function()
+  vim.cmd.stopinsert()
+end
+
 local version = vim.version()
 local nvim_version =
   string.format("v%d.%d.%d", version.major, version.minor, version.patch)
@@ -57,24 +62,25 @@ return {
     git = { enabled = false },
     gitbrowse = { enabled = false },
     image = { enabled = false },
-    indent = { enabled = false },
-    -- such indent blankline
     indent = { enabled = true },
     input = { enabled = false },
     layout = { enabled = false },
-    lazygit = { enabled = true },
+    lazygit = {
+      configure = true,
+      config = {
+        os = { editPreset = "nvim-remote" },
+        gui = {
+          nerdFontsVersion = "3",
+        },
+      },
+    },
     notifier = {
-      timeout = 3000, -- default timeout in ms
+      timeout = 3000,
       width = { min = 40, max = 0.4 },
       height = { min = 1, max = 0.6 },
-      -- editor margin to keep free. tabline and statusline are taken into account automatically
-      -- margin = { top = 10, right = 1, bottom = 0 },
-      -- margin = { right = 1, bottom = 10 },
       margin = { top = 0, right = 1, bottom = 0 },
-      padding = true, -- add 1 cell of left/right padding to the notification window
-      sort = { "level", "added" }, -- sort by level and time
-      -- minimum log level to display. TRACE is the lowest
-      -- all notifications are stored in history
+      padding = true,
+      sort = { "level", "added" },
       level = vim.log.levels.TRACE,
       icons = {
         error = " ",
@@ -83,19 +89,16 @@ return {
         debug = " ",
         trace = " ",
       },
-      keep = function(notif)
+      keep = function()
         return vim.fn.getcmdpos() > 0
       end,
       ---@type snacks.notifier.style
       style = "compact",
-      top_down = false, -- place notifications from top to bottom
-      date_format = "%R", -- time format for notifications
-      -- format for footer when more lines are available
-      -- `%d` is replaced with the number of lines.
-      -- only works for styles with a border
+      top_down = false,
+      date_format = "%R",
       ---@type string|boolean
       more_format = " ↓ %d lines ",
-      refresh = 50, -- refresh at most every 50ms
+      refresh = 50,
     },
     notify = { enabled = false },
     picker = {
@@ -104,10 +107,7 @@ return {
           auto_close = true,
         },
         buffers = {
-          -- start in normal mode
-          on_show = function()
-            vim.cmd.stopinsert()
-          end,
+          on_show = start_on_normal_mode,
           win = {
             input = {
               keys = {
@@ -116,6 +116,15 @@ return {
             },
             list = { keys = { ["d"] = "bufdelete" } },
           },
+        },
+        diagnostics = {
+          on_show = start_on_normal_mode,
+        },
+        select = {
+          on_show = start_on_normal_mode,
+        },
+        picker_actions = {
+          on_show = start_on_normal_mode,
         },
       },
     },
