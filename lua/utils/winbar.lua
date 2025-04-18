@@ -12,9 +12,9 @@ local function get_winbar_path()
   if full_path:find(workspace_root, 1, true) == 1 then
     local relative_path = full_path:sub(#workspace_root + 2)
     if relative_path == "" then
-      return "󰉋 ."
+      return "󰉋 . "
     end
-    return "󰉋 " .. relative_path
+    return "󰉋 " .. relative_path .. " "
   end
 
   return full_path:gsub(vim.fn.expand("$HOME"), "~")
@@ -41,9 +41,9 @@ function M.build()
   local file_name = vim.fn.expand("%:t")
 
   return table.concat({
-    "%#BufferCount#(" .. buffer_count .. ") ",
-    "%#FileName#%m " .. file_name,
-    "%*%=%#FilePath# " .. file_path,
+    "%#WinbarBufferCount#   (" .. buffer_count .. ") ",
+    "%#WinbarFileName#%m " .. file_name,
+    "%*%=%#WinbarFilePath# " .. file_path,
   })
 end
 

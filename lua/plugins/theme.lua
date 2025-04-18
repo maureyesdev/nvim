@@ -80,6 +80,10 @@ return {
       TreesitterContext = { bg = "base" },
       CursorLine = { bg = "surface" },
       CursorLineNr = { fg = "rose" },
+      -- Winbar highlight groups
+      WinbarBufferCount = { bg = "surface", fg = "pine" },
+      WinbarFileName = { bg = "surface", fg = "foam" },
+      WinbarFilePath = { bg = "surface", fg = "gold" },
     },
 
     before_highlight = function(group, highlight, palette)
