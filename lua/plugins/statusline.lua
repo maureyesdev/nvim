@@ -1,21 +1,8 @@
--- need to move to utils
-local does_buffer_has_lsp_attached = function()
-  local has_lsp = not vim.tbl_isempty(vim.lsp.get_clients({ bufnr = 0 }))
-
-  local ok, conform = pcall(require, "conform")
-  local has_formatter = false
-  if ok then
-    local formatters = conform.list_formatters_for_buffer()
-    has_formatter = not vim.tbl_isempty(formatters)
-  end
-
-  return has_lsp or has_formatter
-end
-
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
+    local lsp_utils = require("utils.lsp")
     local base = "#0a0911"
     local surface = "#0f0d1a"
     local overlay = "#26233a"
@@ -93,25 +80,47 @@ return {
             sources = { "nvim_diagnostic" },
             symbols = {
               error = " ",
-              warn = "  ",
-              hint = "  ",
-              info = "  ",
+              warn = " ",
+              hint = " ",
+              info = " ",
             },
             colored = true,
             update_in_insert = false,
             always_visible = true,
-            cond = does_buffer_has_lsp_attached,
+            cond = lsp_utils.has_attached_lsp_or_formatter,
+            fmt = function(str)
+              local out = {}
+              for hl, icon, count in string.gmatch(str, "(%%#.-#)(.-)(%d+)") do
+                if tonumber(count) > 0 then
+                  table.insert(out, hl .. icon .. count)
+                end
+              end
+              -- fallback to default if no hl group
+              -- if #out == 0 then
+              --   return "✔ clean"
+              -- end
+              return table.concat(out, " ")
+            end,
           },
         },
         lualine_c = {
           {
             "diff",
+            symbols = {
+              -- symbols = {
+              -- added = " ",
+              -- modified = " ",
+              -- removed = " ",
+              added = " ",
+              modified = " ",
+              removed = " ",
+              -- added = "+ ",
+              -- modified = "~ ",
+              -- removed = "- ",
+            },
           },
         },
         lualine_x = {
-          {
-            "searchcount",
-          },
           {
             "location",
             icon = "",
@@ -159,7 +168,7 @@ return {
 
               return lsp .. table.concat(lsp_names, ", ")
             end,
-            cond = does_buffer_has_lsp_attached,
+            cond = lsp_utils.has_attached_lsp_or_formatter,
           },
         },
       },
