@@ -73,14 +73,13 @@ return {
       },
     },
 
-    -- NOTE: Highlight groups are extended (merged) by default. Disable this
-    -- per group via `inherit = false`
+    -- TODO: Need to add comments for each highlight group to explain
     highlight_groups = {
-      -- Comment = { fg = "foam" },
-      -- StatusLine = { fg = "love", bg = "love", blend = 15 },
-      -- VertSplit = { fg = "muted", bg = "muted" },
-      -- Visual = { fg = "base", bg = "text", inherit = false },
       SnacksIndentScope = { fg = "rose" },
+      TreesitterContextLineNumber = { fg = "pine", bg = "base" },
+      TreesitterContext = { bg = "base" },
+      CursorLine = { bg = "surface" },
+      CursorLineNr = { fg = "rose" },
     },
 
     before_highlight = function(group, highlight, palette)
