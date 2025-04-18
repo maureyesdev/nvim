@@ -1,3 +1,4 @@
+local winbar_utils = require("utils.winbar")
 -------------------------------------------------------------------------------
 -- `:help vim.opt`
 -------------------------------------------------------------------------------
@@ -81,7 +82,7 @@ vim.opt.incsearch = true
 -- hide ~ on empty lines for a cleaner UI
 vim.opt.fillchars:append({ eob = " " })
 -- enables the window bar and determines its contents
-vim.opt.winbar = ""
+vim.opt.winbar = winbar_utils.build()
 -- controls the width of the fold column (the column to the left of the text that shows fold markers
 vim.opt.foldcolumn = "0"
 -- Sets the initial fold level when a buffer is opened
