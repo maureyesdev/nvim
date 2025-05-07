@@ -129,16 +129,16 @@ keymap.set("n", "<leader>gm", function()
   require("snacks").lazygit()
 end, opts)
 
--- keymap.set("n", "<leader>gd", function()
---   require("snacks").picker.git_diff({ layout = "vertical" })
--- end, opts)
+keymap.set("n", "<leader>gd", function()
+  require("snacks").picker.git_diff({ layout = "sidebar" })
+end, opts)
 
 keymap.set("n", "<leader>gb", function()
-  require("snacks").picker.git_branches({ layout = { preset = "vscode" } })
+  require("snacks").picker.git_branches({ layout = { preset = "sidebar" } })
 end, opts)
 
 keymap.set("n", "<leader>gs", function()
-  require("snacks").picker.git_status({ layout = { preset = "vscode" } })
+  require("snacks").picker.git_status({ layout = { preset = "sidebar" } })
 end, opts)
 
 -- Need to discontinue this and replace it by below keymap
@@ -151,14 +151,18 @@ keymap.set("n", "<leader>ff", function()
 end, opts)
 
 keymap.set("n", "<leader>fg", function()
-  require("snacks").picker.grep({ layout = { preset = "ivy" } })
+  -- require("snacks").picker.grep({ layout = { preset = "ivy" } })
+  require("snacks").picker.grep({ layout = { preset = "sidebar" } })
 end, opts)
 
-keymap.set("n", "<leader>fl", function()
-  require("snacks").picker.lines({
-    layout = { preset = "vscode" },
-  })
-end, opts)
+-- There is a bug on this picker where:
+-- -- 1. If you open the picker on dashboard, then it adds number rules
+-- -- 2. if you open the picker it literally duplicates the wibar
+-- keymap.set("n", "<leader>fl", function()
+--   require("snacks").picker.lines({
+--     layout = { preset = "vscode" },
+--   })
+-- end, opts)
 
 keymap.set("n", "<leader>ca", function()
   vim.lsp.buf.code_action()
@@ -216,9 +220,22 @@ vim.keymap.set("n", "<leader>cc", function()
 end, opts)
 
 vim.keymap.set("n", "<localleader>ll", function()
-  require("logsitter").log()
+  -- require("logsitter").log()
+  require("wrapper").wrap_under_cursor()
 end, opts)
 
 vim.keymap.set("n", "<localleader>jj", function()
   require("flash").jump()
+end, opts)
+
+keymap.set("n", "<leader>cs", function()
+  require("snacks").picker.spelling()
+end, opts)
+
+keymap.set("n", "<leader>dime", function()
+  require("snacks").dim.enable()
+end, opts)
+
+keymap.set("n", "<leader>dims", function()
+  require("snacks").dim.disable()
 end, opts)

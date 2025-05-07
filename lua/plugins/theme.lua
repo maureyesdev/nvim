@@ -14,7 +14,7 @@ return {
     styles = {
       bold = true,
       italic = true,
-      transparency = false,
+      transparency = true,
     },
     groups = {
       border = "muted",
@@ -86,6 +86,7 @@ return {
       WinbarFilePath = { bg = "surface", fg = "gold" },
     },
 
+    ---@diagnostic disable: unused-local
     before_highlight = function(group, highlight, palette)
       -- Disable all undercurls
       -- if highlight.undercurl then

@@ -41,7 +41,7 @@ function M.build()
   local file_name = vim.fn.expand("%:t")
 
   return table.concat({
-    "%#WinbarBufferCount#   (" .. buffer_count .. ") ",
+    "%#WinbarBufferCount# (" .. buffer_count .. ") ",
     "%#WinbarFileName#%m " .. file_name,
     "%*%=%#WinbarFilePath# " .. file_path,
   })
