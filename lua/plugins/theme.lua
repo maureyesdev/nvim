@@ -2,8 +2,8 @@ return {
   "rose-pine/neovim",
   name = "rose-pine",
   opts = {
-    variant = "main",
-    dark_variant = "main",
+    variant = "main", -- auto, main, moon, or dawn
+    dark_variant = "main", -- main, moon, or dawn
     dim_inactive_windows = false,
     extend_background_behind_borders = true,
     enable = {
@@ -14,7 +14,7 @@ return {
     styles = {
       bold = true,
       italic = true,
-      transparency = true,
+      transparency = false,
     },
     groups = {
       border = "muted",
@@ -46,15 +46,8 @@ return {
     palette = {
       main = {
         _nc = "#16141f",
-
-        -- 6 tones down
-        -- base = "#0f0e18",
-        -- surface = "#141221",
-
-        -- 8 tones down
-        base = "#0a0911",
-        surface = "#0f0d1a",
-
+        base = "#191724",
+        surface = "#1f1d2e",
         overlay = "#26233a",
         muted = "#6e6a86",
         subtle = "#908caa",
@@ -71,15 +64,58 @@ return {
         highlight_high = "#524f67",
         none = "NONE",
       },
+      moon = {
+        _nc = "#16141f",
+        -- 6 tones down
+        base = "#0f0e18",
+        surface = "#141221",
+        -- 8 tones down
+        -- base = "#0a0911",
+        -- surface = "#0f0d1a",
+        overlay = "#26233a",
+        muted = "#6e6a86",
+        subtle = "#908caa",
+        text = "#e0def4",
+        love = "#eb6f92",
+        gold = "#f6c177",
+        rose = "#ebbcba",
+        pine = "#31748f",
+        foam = "#9ccfd8",
+        iris = "#c4a7e7",
+        leaf = "#95b1ac",
+        highlight_low = "#21202e",
+        highlight_med = "#403d52",
+        highlight_high = "#524f67",
+        none = "NONE",
+      },
+      dawn = {
+        _nc = "#f8f0e7",
+        base = "#faf4ed",
+        surface = "#fffaf3",
+        overlay = "#f2e9e1",
+        muted = "#9893a5",
+        subtle = "#797593",
+        text = "#464261",
+        love = "#b4637a",
+        gold = "#ea9d34",
+        rose = "#d7827e",
+        pine = "#286983",
+        foam = "#56949f",
+        iris = "#907aa9",
+        leaf = "#6d8f89",
+        highlight_low = "#f4ede8",
+        highlight_med = "#dfdad9",
+        highlight_high = "#cecacd",
+        none = "NONE",
+      },
     },
 
-    -- TODO: Need to add comments for each highlight group to explain
     highlight_groups = {
-      SnacksIndentScope = { fg = "rose" },
-      TreesitterContextLineNumber = { fg = "pine", bg = "base" },
-      TreesitterContext = { bg = "base" },
-      CursorLine = { bg = "surface" },
-      CursorLineNr = { fg = "rose" },
+      -- SnacksIndentScope = { fg = "rose" },
+      -- TreesitterContextLineNumber = { fg = "pine", bg = "base" },
+      -- TreesitterContext = { bg = "base" },
+      -- CursorLine = { bg = "surface" },
+      -- CursorLineNr = { fg = "rose" },
       -- Winbar highlight groups
       WinbarBufferCount = { bg = "surface", fg = "pine" },
       WinbarFileName = { bg = "surface", fg = "foam" },

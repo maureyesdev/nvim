@@ -239,3 +239,9 @@ end, opts)
 keymap.set("n", "<leader>dims", function()
   require("snacks").dim.disable()
 end, opts)
+
+keymap.set("n", "<Esc>", function()
+  if vim.v.hlsearch == 1 then
+    vim.cmd("nohlsearch")
+  end
+end, { noremap = true, silent = true })

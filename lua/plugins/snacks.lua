@@ -1011,7 +1011,7 @@ return {
     },
     debug = { enabled = false },
     dim = { enabled = false },
-    explorer = { enabled = false },
+    explorer = { enabled = true },
     git = { enabled = false },
     gitbrowse = { enabled = false },
     image = { enabled = false },
@@ -1027,32 +1027,7 @@ return {
         },
       },
     },
-    notifier = {
-      timeout = 3000,
-      width = { min = 40, max = 0.4 },
-      height = { min = 1, max = 0.6 },
-      margin = { top = 0, right = 1, bottom = 0 },
-      padding = true,
-      sort = { "level", "added" },
-      level = vim.log.levels.TRACE,
-      icons = {
-        error = " ",
-        warn = " ",
-        info = " ",
-        debug = " ",
-        trace = " ",
-      },
-      keep = function()
-        return vim.fn.getcmdpos() > 0
-      end,
-      ---@type snacks.notifier.style
-      style = "compact",
-      top_down = false,
-      date_format = "%R",
-      ---@type string|boolean
-      more_format = " ↓ %d lines ",
-      refresh = 50,
-    },
+    notifier = { enabled = false },
     notify = { enabled = false },
     picker = {
       sources = {
