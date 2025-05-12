@@ -3,55 +3,10 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     local lsp_utils = require("utils.lsp")
-    local base = "#0a0911"
-    local surface = "#0f0d1a"
-    local overlay = "#26233a"
-    local muted = "#6e6a86"
-    local text = "#e0def4"
-    local love = "#eb6f92"
-    local rose = "#ebbcba"
-    local pine = "#31748f"
-    local foam = "#9ccfd8"
-    local iris = "#c4a7e7"
-
-    local theme = {
-      normal = {
-        a = { bg = rose, fg = base, gui = "bold" },
-        b = { bg = surface, fg = rose },
-        c = { bg = surface, fg = text },
-        z = { bg = overlay, fg = rose },
-      },
-      insert = {
-        a = { bg = foam, fg = base, gui = "bold" },
-        b = { bg = surface, fg = foam },
-        c = { bg = surface, fg = text },
-      },
-      visual = {
-        a = { bg = iris, fg = base, gui = "bold" },
-        b = { bg = surface, fg = iris },
-        c = { bg = surface, fg = text },
-      },
-      replace = {
-        a = { bg = pine, fg = base, gui = "bold" },
-        b = { bg = surface, fg = pine },
-        c = { bg = surface, fg = text },
-      },
-      command = {
-        a = { bg = love, fg = base, gui = "bold" },
-        b = { bg = surface, fg = love },
-        c = { bg = surface, fg = text },
-      },
-      inactive = {
-        a = { bg = base, fg = muted, gui = "bold" },
-        b = { bg = base, fg = muted },
-        c = { bg = base, fg = muted },
-      },
-    }
 
     require("lualine").setup({
       options = {
         icons_enabled = true,
-        theme = theme,
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
         disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
