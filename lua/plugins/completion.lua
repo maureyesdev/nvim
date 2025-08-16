@@ -16,11 +16,12 @@ return {
       ["<c-f>"] = { "scroll_documentation_up", "fallback" },
       ["<c-b>"] = { "scroll_documentation_down", "fallback" },
     },
+
     appearance = {
       nerd_font_variant = "mono",
     },
+
     cmdline = {
-      -- TODO: Need nvim-cmp behavior
       enabled = false,
       keymap = {
         ["<Tab>"] = { "show_and_insert", "accept" },
@@ -30,40 +31,14 @@ return {
         ["<C-p>"] = { "select_prev", "fallback_to_mappings" },
         ["<C-n>"] = { "select_next", "fallback_to_mappings" },
       },
-      completion = {
-        menu = {
-          auto_show = false,
-          draw = {
-            columns = {
-              { "label" },
-            },
-          },
-        },
-      },
     },
+
     completion = {
       menu = {
         auto_show = true,
-        border = "rounded",
         draw = {
           gap = 1,
           padding = 2,
-          columns = {
-            -- { "kind_icon" },
-            { "label" },
-            { "kind" },
-          },
-          components = {
-            label = {
-              text = function(ctx)
-                -- this removes from the label the parenthesis
-                -- example
-                -- transform  this `nvim__complete_set(index, opts)`
-                -- to this `nvim__complete_set`
-                return ctx.label:match("^[^(]+")
-              end,
-            },
-          },
         },
       },
       accept = {
@@ -71,13 +46,8 @@ return {
           enabled = false,
         },
       },
-      documentation = { auto_show = false },
-      list = {
-        selection = {
-          preselect = false,
-        },
-      },
     },
+
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
     },
