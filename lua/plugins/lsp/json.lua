@@ -39,9 +39,25 @@ return {
   -----------------------------------------------------------------------------
   {
     "neovim/nvim-lspconfig",
+    dependencies = { "b0o/SchemaStore.nvim" },
     opts = function()
       local capabilities = require("blink.cmp").get_lsp_capabilities()
-      require("lspconfig").jsonls.setup({ capabilities = capabilities })
+      require("lspconfig").jsonls.setup({
+        capabilities = capabilities,
+        on_new_config = function(new_config)
+          new_config.settings.json.schemas = new_config.settings.json.schemas
+            or {}
+          vim.list_extend(
+            new_config.settings.json.schemas,
+            require("schemastore").json.schemas()
+          )
+        end,
+        settings = {
+          json = {
+            schemas = require("schemastore").json.schemas(),
+          },
+        },
+      })
     end,
   },
 }
