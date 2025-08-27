@@ -157,7 +157,7 @@ end, opts)
 
 -- There is a bug on this picker where:
 -- -- 1. If you open the picker on dashboard, then it adds number rules
--- -- 2. if you open the picker it literally duplicates the wibar
+-- -- 2. if you open the picker it literally duplicates the winbar
 -- keymap.set("n", "<leader>fl", function()
 --   require("snacks").picker.lines({
 --     layout = { preset = "vscode" },
@@ -220,7 +220,6 @@ vim.keymap.set("n", "<leader>cc", function()
 end, opts)
 
 vim.keymap.set("n", "<localleader>ll", function()
-  -- require("logsitter").log()
   require("wrapper").wrap_under_cursor()
 end, opts)
 
