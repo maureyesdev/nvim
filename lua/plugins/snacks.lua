@@ -1002,6 +1002,7 @@ return {
     bigfile = { enabled = false },
     bufdelete = { enabled = false },
     dashboard = {
+      enabled = false,
       preset = { header = header },
       sections = {
         { section = "header" },
@@ -1015,7 +1016,15 @@ return {
     git = { enabled = false },
     gitbrowse = { enabled = false },
     image = { enabled = false },
-    indent = { enabled = true },
+    indent = {
+      enabled = true,
+      filter = function(buf)
+        return vim.g.snacks_indent ~= false
+          and vim.b[buf].snacks_indent ~= false
+          and vim.bo[buf].buftype == ""
+          and vim.bo[buf].filetype ~= "dashboard"
+      end,
+    },
     input = { enabled = false },
     layout = { enabled = false },
     lazygit = {
