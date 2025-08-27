@@ -136,10 +136,6 @@ return {
         -- end
       end,
     },
-    -- config = function(_, opts)
-    --   require("rose-pine").setup(opts)
-    --   vim.cmd("colorscheme rose-pine")
-    -- end,
   },
   {
     "catppuccin/nvim",
@@ -193,9 +189,5 @@ return {
         -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
       },
     },
-    config = function(_, opts)
-      require("catppuccin").setup(opts)
-      vim.cmd("colorscheme catppuccin")
-    end,
   },
 }
