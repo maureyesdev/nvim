@@ -37,6 +37,93 @@ return {
     })
 
     ---------------------------------------------------------------------------
+    -- TOGGLES: built-in 'spell' and fastspell diagnostics (with immediate rescan)
+    ---------------------------------------------------------------------------
+    -- Find the existing diagnostic namespace registered by fastspell
+    local function get_fastspell_ns()
+      if vim.diagnostic.get_namespaces then
+        for ns_id, ns in pairs(vim.diagnostic.get_namespaces()) do
+          if ns and ns.name == "fastspell" then
+            return ns_id
+          end
+        end
+      end
+      return vim.api.nvim_create_namespace("fastspell")
+    end
+
+    local FASTSPELL_NS = get_fastspell_ns()
+    local fastspell_enabled = true
+
+    -- forward-declare so toggle can call it
+    local check_full_buffer
+
+    local function fastspell_set_enabled(enabled)
+      fastspell_enabled = not not enabled
+      local buf = vim.api.nvim_get_current_buf()
+
+      if not fastspell_enabled then
+        -- Clear diagnostics now so the view is clean
+        pcall(vim.diagnostic.reset, FASTSPELL_NS, buf)
+        vim.notify("Fastspell: OFF", vim.log.levels.INFO)
+        return
+      end
+
+      -- Turned ON → immediately rescan current buffer
+      vim.notify("Fastspell: ON (rescanning buffer…)", vim.log.levels.INFO)
+      vim.schedule(function()
+        if check_full_buffer then
+          check_full_buffer()
+        else
+          -- Fallback if binding not ready (shouldn't happen, but safe)
+          local ok, fs = pcall(require, "fastspell")
+          if ok then
+            local b = vim.api.nvim_get_current_buf()
+            pcall(fs.sendSpellCheckRequest, 0, vim.api.nvim_buf_line_count(b))
+          end
+        end
+      end)
+    end
+
+    local function fastspell_toggle()
+      fastspell_set_enabled(not fastspell_enabled)
+    end
+
+    -- Built-in spell toggle (window-local)
+    local function spell_toggle()
+      vim.wo.spell = not vim.wo.spell
+      local status = vim.wo.spell and "ON" or "OFF"
+      local lang = (vim.bo.spelllang ~= "" and vim.bo.spelllang) or "en"
+      vim.notify(
+        ("Spell: %s (lang: %s)"):format(status, lang),
+        vim.log.levels.INFO
+      )
+    end
+
+    -- User commands
+    vim.api.nvim_create_user_command("FastspellEnable", function()
+      fastspell_set_enabled(true)
+    end, {})
+    vim.api.nvim_create_user_command("FastspellDisable", function()
+      fastspell_set_enabled(false)
+    end, {})
+    vim.api.nvim_create_user_command("FastspellToggle", fastspell_toggle, {})
+    vim.api.nvim_create_user_command("SpellToggle", spell_toggle, {})
+
+    -- Keymaps (kept clear of your existing <leader>sa/sc/ss)
+    vim.keymap.set(
+      "n",
+      "<leader>sf",
+      fastspell_toggle,
+      { desc = "[S]pell: toggle [F]astspell" }
+    )
+    vim.keymap.set(
+      "n",
+      "<leader>st",
+      spell_toggle,
+      { desc = "[S]pell: built-in toggle" }
+    )
+
+    ---------------------------------------------------------------------------
     -- Safe reload + throttle + full recheck (scheduled to avoid fast-event errors)
     ---------------------------------------------------------------------------
     local reload_inflight = false
@@ -54,10 +141,12 @@ return {
           reload_inflight = false
           local buf = vim.api.nvim_get_current_buf()
           pcall(function()
-            require("fastspell").sendSpellCheckRequest(
-              0,
-              vim.api.nvim_buf_line_count(buf)
-            )
+            if fastspell_enabled then
+              require("fastspell").sendSpellCheckRequest(
+                0,
+                vim.api.nvim_buf_line_count(buf)
+              )
+            end
           end)
         end, 100)
       end)
@@ -199,11 +288,15 @@ return {
 
     ---------------------------------------------------------------------------
     -- Normal-mode, full-buffer checks (no realtime typing checks)
+    -- (respects fastspell_enabled)
     ---------------------------------------------------------------------------
     local group =
       vim.api.nvim_create_augroup("FastspellFullBuffer", { clear = true })
 
-    local function check_full_buffer()
+    check_full_buffer = function()
+      if not fastspell_enabled then
+        return
+      end
       local buf = vim.api.nvim_get_current_buf()
       fastspell.sendSpellCheckRequest(0, vim.api.nvim_buf_line_count(buf))
     end
