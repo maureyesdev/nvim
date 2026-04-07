@@ -3,7 +3,7 @@ vim.pack.add({
 })
 
 require("nvim-treesitter").setup({
-  ensure_installed = {},
+  ensure_installed = { "lua", "vim" },
   auto_install = false,
   indent = { enable = true },
   highlight = { enable = true },
