@@ -8,5 +8,6 @@ require("plugins.formatting")
 require("plugins.theme")
 require("plugins.snacks")
 require("plugins.tmux-navigation")
+require("plugins.git")
 
 vim.cmd("colorscheme rose-pine")
