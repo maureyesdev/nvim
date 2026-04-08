@@ -6,11 +6,37 @@ local start_on_normal_mode = function()
   vim.cmd.stopinsert()
 end
 
+local headers = {
+  [[
+│ ╲ ││
+││╲╲││
+││ ╲ │
+  ]],
+}
+
+local version = vim.version()
+local nvim_version =
+  string.format("v%d.%d.%d", version.major, version.minor, version.patch)
+
+local function random_header()
+  math.randomseed(os.time())
+  local index = math.random(1, #headers)
+  return headers[index]
+end
+
+local header = random_header() .. "\n" .. "NVIM" .. " " .. nvim_version
+
 require("snacks").setup({
   animate = { enabled = false },
   bigfile = { enabled = false },
   bufdelete = { enabled = false },
-  dashboard = { enabled = false },
+  dashboard = {
+    enabled = true,
+    preset = { header = header },
+    sections = {
+      { section = "header" },
+    },
+  },
   debug = { enabled = false },
   dim = { enabled = false },
   explorer = { enabled = true },
