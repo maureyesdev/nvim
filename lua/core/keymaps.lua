@@ -21,12 +21,19 @@ keymap.set("n", "<C-j>", "<C-w>j", opts)
 keymap.set("n", "<C-k>", "<C-w>k", opts)
 keymap.set("n", "<C-l>", "<C-w>l", opts)
 
+-- TODO: Need to amend this require ordering issue
 -- Ctrl + h | j | k | l FOR TMUX
-vim.api.nvim_set_keymap("n", "<C-h>", ":TmuxNavigateLeft<CR>", opts)
-vim.api.nvim_set_keymap("n", "<C-j>", ":TmuxNavigateDown<CR>", opts)
-vim.api.nvim_set_keymap("n", "<C-k>", ":TmuxNavigateUp<CR>", opts)
-vim.api.nvim_set_keymap("n", "<C-l>", ":TmuxNavigateRight<CR>", opts)
-vim.api.nvim_set_keymap("n", "<C-\\>", ":TmuxNavigatePrevious<CR>", opts)
+-- local nvim_tmux_nav = require("nvim-tmux-navigation")
+-- -- vim.api.nvim_set_keymap("n", "<C-h>", ":TmuxNavigateLeft<CR>", opts)
+-- -- vim.api.nvim_set_keymap("n", "<C-j>", ":TmuxNavigateDown<CR>", opts)
+-- -- vim.api.nvim_set_keymap("n", "<C-k>", ":TmuxNavigateUp<CR>", opts)
+-- -- vim.api.nvim_set_keymap("n", "<C-l>", ":TmuxNavigateRight<CR>", opts)
+-- -- vim.api.nvim_set_keymap("n", "<C-\\>", ":TmuxNavigatePrevious<CR>", opts)
+-- keymap.set("n", "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
+-- vim.keymap.set("n", "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
+-- vim.keymap.set("n", "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
+-- vim.keymap.set("n", "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
+-- vim.keymap.set("n", "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
 
 -- Resize with arrows
 keymap.set("n", "<C-Up>", ":resize +20<CR>", opts)
