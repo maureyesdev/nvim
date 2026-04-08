@@ -89,9 +89,135 @@ keymap.set("v", "p", '"_dP', opts)
 keymap.set("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap.set("x", "K", ":move '<-2<CR>gv-gv", opts)
 
+keymap.set("n", "<leader>sp", function()
+  require("snacks").picker({ layout = { preset = "vscode" } })
+end, opts)
+
+keymap.set("n", "<leader>xx", function()
+  require("snacks").picker.diagnostics()
+end, opts)
+
+keymap.set("n", "<leader>::", function()
+  require("snacks").picker.commands()
+end, opts)
+
+keymap.set("n", "<leader>ee", function()
+  require("snacks").picker.explorer()
+end, opts)
+
+keymap.set("n", "<leader>bb", function()
+  require("snacks").picker.buffers()
+end, opts)
+
+keymap.set("n", "<leader>gm", function()
+  require("snacks").lazygit()
+end, opts)
+
+keymap.set("n", "<leader>gd", function()
+  require("snacks").picker.git_diff({ layout = "sidebar" })
+end, opts)
+
+keymap.set("n", "<leader>gb", function()
+  require("snacks").picker.git_branches({ layout = { preset = "sidebar" } })
+end, opts)
+
+keymap.set("n", "<leader>gs", function()
+  require("snacks").picker.git_status({ layout = { preset = "sidebar" } })
+end, opts)
+
+keymap.set("n", "<leader>ff", function()
+  require("snacks").picker.files()
+end, opts)
+
+keymap.set("n", "<leader>fg", function()
+  require("snacks").picker.grep()
+end, opts)
+
+-- There is a bug on this picker where:
+-- -- 1. If you open the picker on dashboard, then it adds number rules
+-- -- 2. if you open the picker it literally duplicates the winbar
+keymap.set("n", "<leader>fl", function()
+  require("snacks").picker.lines()
+end, opts)
+
+keymap.set("n", "<leader>ca", function()
+  vim.lsp.buf.code_action()
+end, opts)
+
+vim.keymap.set("n", "<leader>cr", function()
+  local curr_name = vim.fn.expand("<cword>")
+  require("snacks.input").input({
+    prompt = "Rename to:",
+    default = curr_name,
+  }, function(new_name)
+    if new_name and #new_name > 0 and new_name ~= curr_name then
+      vim.lsp.buf.rename(new_name)
+    end
+  end)
+end, { desc = "LSP: Rename with Snacks input" })
+
+-- This behavior is the neovim default
+-- is currently available in case I would like to use it
+-- keymap.set("n", "K", function()
+--   vim.lsp.buf.hover()
+-- end, opts)
+
+keymap.set("n", "<leader>lh", function()
+  vim.lsp.buf.hover()
+end, opts)
+
+keymap.set("n", "<leader>le", function()
+  vim.diagnostic.open_float()
+end, opts)
+
+-- TODO: need to find out a better plugin support for this.
+--       this picker is not that complete
+keymap.set("n", "<leader>ls", function()
+  require("snacks").picker.lsp_symbols()
+end, opts)
+
+keymap.set("n", "<leader>lr", function()
+  require("snacks").picker.lsp_references()
+end, opts)
+
+keymap.set("n", "<leader>li", function()
+  require("snacks").picker.lsp_implementations()
+end, opts)
+
+keymap.set("n", "<leader>ld", function()
+  require("snacks").picker.lsp_definitions()
+end, opts)
+
+vim.keymap.set("n", "<leader>cc", function()
+  require("treesitter-context").go_to_context(vim.v.count1)
+end, opts)
+
+vim.keymap.set("n", "<localleader>ll", function()
+  require("wrapper").wrap_under_cursor()
+end, opts)
+
+vim.keymap.set("n", "<localleader>jj", function()
+  require("flash").jump()
+end, opts)
+
+keymap.set("n", "<leader>cs", function()
+  require("snacks").picker.spelling()
+end, opts)
+
+keymap.set("n", "<leader>dime", function()
+  require("snacks").dim.enable()
+end, opts)
+
+keymap.set("n", "<leader>dims", function()
+  require("snacks").dim.disable()
+end, opts)
+
 keymap.set("n", "<Esc>", function()
   if vim.v.hlsearch == 1 then
     vim.cmd("nohlsearch")
   end
 end, { noremap = true, silent = true })
 
+keymap.set("n", "<leader>cf", function()
+  vim.lsp.buf.format()
+end, opts)
