@@ -9,5 +9,6 @@ require("plugins.theme")
 require("plugins.snacks")
 require("plugins.tmux-navigation")
 require("plugins.git")
+require("plugins.statusline")
 
 vim.cmd("colorscheme rose-pine")
