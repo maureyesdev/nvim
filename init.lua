@@ -11,5 +11,6 @@ require("plugins.tmux-navigation")
 require("plugins.git")
 require("plugins.statusline")
 require("plugins.noice")
+require("plugins.folding")
 
 vim.cmd("colorscheme rose-pine")
