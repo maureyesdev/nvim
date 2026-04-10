@@ -12,5 +12,6 @@ require("plugins.git")
 require("plugins.statusline")
 require("plugins.noice")
 require("plugins.folding")
+require("plugins.icons")
 
 vim.cmd("colorscheme rose-pine")
