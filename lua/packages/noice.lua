@@ -1,9 +1,6 @@
-vim.pack.add({
-  "https://github.com/folke/noice.nvim",
-  "https://github.com/MunifTanjim/nui.nvim",
-})
+local noice = require("noice")
 
-require("noice").setup({
+noice.setup({
   lsp = {
     -- HACK: this should not be the place to configure this
     hover = {

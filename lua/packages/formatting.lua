@@ -1,8 +1,6 @@
-vim.pack.add({
-  "https://github.com/stevearc/conform.nvim",
-})
+local conform = require("conform")
 
-require("conform").setup({
+conform.setup({
   formatters_by_ft = {
     lua = { "stylua" },
   },

@@ -1,6 +1,4 @@
-vim.pack.add({
-  "https://github.com/nvim-lualine/lualine.nvim",
-})
+local lualine = require("lualine")
 
 local function has_attached_lsp_or_formatter()
   local clients = vim.lsp.get_clients({ bufnr = 0 })
@@ -23,7 +21,7 @@ local function has_attached_lsp_or_formatter()
   return has_real_lsp or has_formatter
 end
 
-require("lualine").setup({
+lualine.setup({
   options = {
     icons_enabled = true,
     component_separators = { left = "", right = "" },

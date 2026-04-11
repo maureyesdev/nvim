@@ -1,8 +1,6 @@
-vim.pack.add({
-  { src = "https://github.com/rose-pine/neovim", name = "rose-pine" },
-})
+local rose_pine = require("rose-pine")
 
-require("rose-pine").setup({
+rose_pine.setup({
   variant = "main",
   dark_variant = "main",
   dim_inactive_windows = false,
@@ -95,3 +93,5 @@ require("rose-pine").setup({
     -- end
   end,
 })
+
+vim.cmd("colorscheme rose-pine")

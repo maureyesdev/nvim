@@ -1,8 +1,6 @@
-vim.pack.add({
-  "https://github.com/nvim-treesitter/nvim-treesitter",
-})
+local treesitter = require("nvim-treesitter")
 
-require("nvim-treesitter").setup({
+treesitter.setup({
   ensure_installed = { "lua", "vim" },
   auto_install = false,
   indent = { enable = true },

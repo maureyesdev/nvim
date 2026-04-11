@@ -1,9 +1,6 @@
-vim.pack.add({
-  "https://github.com/saghen/blink.cmp",
-  "https://github.com/rafamadriz/friendly-snippets",
-})
+local blink = require("blink.cmp")
 
-require("blink.cmp").setup({
+blink.setup({
   fuzzy = {
     implementation = "prefer_rust",
     prebuilt_binaries = { force_version = "v1.9.1" },

@@ -1,6 +1,4 @@
-vim.pack.add({
-  "https://github.com/folke/snacks.nvim",
-})
+local snacks = require("snacks")
 
 local start_on_normal_mode = function()
   vim.cmd.stopinsert()
@@ -26,7 +24,7 @@ end
 
 local header = random_header() .. "\n" .. "NVIM" .. " " .. nvim_version
 
-require("snacks").setup({
+snacks.setup({
   animate = { enabled = false },
   bigfile = { enabled = false },
   bufdelete = { enabled = false },
