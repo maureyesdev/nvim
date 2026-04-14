@@ -1,7 +1,5 @@
-require("packages.treesitter")
 require("packages.lsp")
 require("packages.completion")
-require("packages.formatting")
 require("packages.theme")
 require("packages.snacks")
 require("packages.tmux-navigation")
