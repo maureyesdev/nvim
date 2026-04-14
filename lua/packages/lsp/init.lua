@@ -93,6 +93,8 @@ end
 -- Register languages
 M.register_language(require("packages.lsp.languages.lua"))
 M.register_language(require("packages.lsp.languages.typescript"))
+M.register_language(require("packages.lsp.languages.html"))
+M.register_language(require("packages.lsp.languages.css"))
 
 -- Initialize everything
 M.setup()
