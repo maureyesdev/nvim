@@ -2,6 +2,15 @@
 -- `:help vim.opt`
 -------------------------------------------------------------------------------
 
+-- Ensure system dirs are on PATH so Mason can find unzip/tar/curl when nvim is
+-- launched from a GUI (Finder/Spotlight) with a stripped environment.
+for _, dir in ipairs({ "/usr/bin", "/bin", "/usr/sbin", "/sbin" }) do
+  if not vim.env.PATH:find(dir, 1, true) then
+    vim.env.PATH = dir .. ":" .. vim.env.PATH
+  end
+end
+
+
 -- controls where the cursor is allowed to move, even if there's no actual text at that position.
 vim.opt.virtualedit = "block"
 -- gives you live preview of your :substitute (:s) commands before you actually hit Enter.

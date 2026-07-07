@@ -36,6 +36,7 @@ lualine.setup({
         fmt = function(mode)
           return mode:lower()
         end,
+        color = { bg = "#090B10", fg = "#ebbcba" },
       },
     },
     lualine_b = {
@@ -73,6 +74,7 @@ lualine.setup({
           -- end
           return table.concat(out, " ")
         end,
+        color = { bg = "#090B10" },
       },
     },
     lualine_c = {
@@ -94,6 +96,9 @@ lualine.setup({
     },
     lualine_x = {
       {
+        "buffers",
+      },
+      {
         "location",
         icon = "",
       },
@@ -110,7 +115,7 @@ lualine.setup({
     lualine_z = {
       {
         function()
-          local lsp = " "
+          local lsp = "  "
           local buf_ft = vim.bo.filetype
           local clients = vim.lsp.get_clients({ bufnr = 0 })
           local lsp_names = {}
@@ -141,6 +146,7 @@ lualine.setup({
           return lsp .. table.concat(lsp_names, ", ")
         end,
         cond = has_attached_lsp_or_formatter,
+        color = { bg = "#090B10", fg = "#ebbcba" },
       },
     },
   },

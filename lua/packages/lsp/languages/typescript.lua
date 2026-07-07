@@ -23,7 +23,11 @@ end
 function TypeScriptLanguage:setup_lsp()
   local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-  vim.lsp.config("vtsls", { capabilities = capabilities })
+  vim.lsp.config("vtsls", {
+    filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "ejs" },
+    capabilities = capabilities,
+    root_markers = { "package.json", "tsconfig.json", "jsconfig.json" },
+  })
   vim.lsp.enable("vtsls")
 end
 

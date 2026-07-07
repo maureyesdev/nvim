@@ -6,6 +6,7 @@ vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
   "https://github.com/folke/lazydev.nvim",
+  "https://github.com/seblyng/roslyn.nvim",
   -- completions
   "https://github.com/saghen/blink.cmp",
   "https://github.com/rafamadriz/friendly-snippets",
@@ -29,4 +30,7 @@ vim.pack.add({
   "https://github.com/kevinhwang91/promise-async",
   -- icons
   "https://github.com/nvim-tree/nvim-web-devicons",
+  -- utils
+  "https://github.com/windwp/nvim-ts-autotag",
+  "https://github.com/windwp/nvim-autopairs",
 })

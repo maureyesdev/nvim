@@ -15,7 +15,10 @@ end
 function HTMLLanguage:setup_lsp()
   local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-  vim.lsp.config("html", { capabilities = capabilities })
+  vim.lsp.config("html", {
+    filetypes = { "html", "ejs" },
+    capabilities = capabilities
+  })
   vim.lsp.enable("html")
 end
 

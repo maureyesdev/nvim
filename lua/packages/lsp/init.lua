@@ -88,6 +88,97 @@ function M.setup()
   require("mason-tool-installer").setup({
     ensure_installed = lsp_installation,
   })
+
+  -------------------------------------------------------------------------------
+  -- User commands
+  -------------------------------------------------------------------------------
+  vim.api.nvim_create_user_command("LspInfo", function()
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
+    if #clients == 0 then
+      vim.notify("No LSP clients attached to this buffer", vim.log.levels.WARN)
+      return
+    end
+    for _, client in ipairs(clients) do
+      local root = client.config.root_dir or "(none)"
+      vim.notify(
+        string.format(
+          "• %s  (id=%d)\n  root: %s",
+          client.name,
+          client.id,
+          root
+        ),
+        vim.log.levels.INFO
+      )
+    end
+  end, { desc = "Show LSP clients attached to current buffer" })
+
+  vim.api.nvim_create_user_command("LspRestart", function(opts)
+    local bufnr = 0
+    local targets = {}
+    if opts.args ~= "" then
+      for _, client in ipairs(vim.lsp.get_clients()) do
+        if client.name == opts.args then
+          table.insert(targets, client)
+        end
+      end
+    else
+      targets = vim.lsp.get_clients({ bufnr = bufnr })
+    end
+    if #targets == 0 then
+      vim.notify("No matching LSP clients", vim.log.levels.WARN)
+      return
+    end
+    local names = {}
+    for _, client in ipairs(targets) do
+      table.insert(names, client.name)
+      client:stop()
+    end
+    vim.defer_fn(function()
+      for _, name in ipairs(names) do
+        vim.lsp.enable(name)
+      end
+      vim.cmd("edit")
+      vim.notify(
+        "Restarted: " .. table.concat(names, ", "),
+        vim.log.levels.INFO
+      )
+    end, 500)
+  end, {
+    nargs = "?",
+    desc = "Restart LSP clients (all attached, or by name)",
+    complete = function()
+      local names = {}
+      for _, client in ipairs(vim.lsp.get_clients()) do
+        table.insert(names, client.name)
+      end
+      return names
+    end,
+  })
+
+  -------------------------------------------------------------------------------
+  -- Diagnostic
+  -------------------------------------------------------------------------------
+  vim.diagnostic.config({
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = " ",
+        [vim.diagnostic.severity.WARN] = " ",
+        [vim.diagnostic.severity.HINT] = " ",
+        [vim.diagnostic.severity.INFO] = " ",
+      },
+    },
+    virtual_text = true,
+    update_in_insert = false,
+    underline = true,
+    severity_sort = true,
+    float = {
+      focusable = true,
+      style = "minimal",
+      border = "single",
+      header = "Diagnostic",
+      prefix = "",
+    },
+  })
 end
 
 -- Register languages
@@ -96,6 +187,9 @@ M.register_language(require("packages.lsp.languages.typescript"))
 M.register_language(require("packages.lsp.languages.html"))
 M.register_language(require("packages.lsp.languages.css"))
 M.register_language(require("packages.lsp.languages.tailwindcss"))
+M.register_language(require("packages.lsp.languages.csharp"))
+M.register_language(require("packages.lsp.languages.ejs"))
+M.register_language(require("packages.lsp.languages.deno"))
 
 -- Initialize everything
 M.setup()
