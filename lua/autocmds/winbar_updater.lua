@@ -1,3 +1,13 @@
+-- The dashboard buffer is set up in-place (no BufEnter fires for it), and
+-- Snacks itself sets a local, empty `winbar` on its window, which Neovim
+-- still renders as a blank bar. Clear it the moment the filetype lands.
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "snacks_dashboard",
+  callback = function()
+    require("utils.winbar").clear()
+  end,
+})
+
 vim.api.nvim_create_autocmd({ "BufEnter", "ModeChanged" }, {
   callback = function(args)
     local winbar_utils = require("utils.winbar")
