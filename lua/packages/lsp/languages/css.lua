@@ -17,6 +17,15 @@ function CSSLanguage:setup_lsp()
 
   vim.lsp.config("cssls", { capabilities = capabilities })
   vim.lsp.enable("cssls")
+
+  vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      if client and client.name == "cssls" then
+        vim.lsp.document_color.enable(false, { bufnr = args.buf })
+      end
+    end,
+  })
 end
 
 return CSSLanguage

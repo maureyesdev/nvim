@@ -71,10 +71,36 @@ function M.setup()
   -------------------------------------------------------------------------------
   require("conform").setup({
     formatters_by_ft = formatters,
+    formatters = {
+      prettier = {
+        prepend_args = { "--single-quote" },
+      },
+    },
     format_on_save = {
       timeout_ms = 2500,
       lsp_format = "fallback",
     },
+  })
+
+  -------------------------------------------------------------------------------
+  -- Linting
+  -------------------------------------------------------------------------------
+  local lint = require("lint")
+  local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
+
+  lint.linters.sqlfluff = vim.tbl_deep_extend("force", lint.linters.sqlfluff, {
+    cmd = mason_bin .. "/sqlfluff",
+    args = { "lint", "--dialect", "postgres", "--exclude-rules", "layout", "--format", "json" },
+  })
+
+  lint.linters_by_ft = {
+    sql = { "sqlfluff" },
+  }
+
+  vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
+    callback = function()
+      lint.try_lint()
+    end,
   })
 
   -------------------------------------------------------------------------------
@@ -190,6 +216,7 @@ M.register_language(require("packages.lsp.languages.tailwindcss"))
 M.register_language(require("packages.lsp.languages.csharp"))
 M.register_language(require("packages.lsp.languages.ejs"))
 M.register_language(require("packages.lsp.languages.deno"))
+M.register_language(require("packages.lsp.languages.sql"))
 
 -- Initialize everything
 M.setup()
