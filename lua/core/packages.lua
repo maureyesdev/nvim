@@ -30,7 +30,10 @@ vim.pack.add({
   "https://github.com/kevinhwang91/promise-async",
   -- icons
   "https://github.com/nvim-tree/nvim-web-devicons",
+  -- linting
+  "https://github.com/mfussenegger/nvim-lint",
   -- utils
   "https://github.com/windwp/nvim-ts-autotag",
   "https://github.com/windwp/nvim-autopairs",
+  "https://github.com/maureyesdev/mermish.nvim",
 })
