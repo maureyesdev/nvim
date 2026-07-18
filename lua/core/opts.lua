@@ -10,7 +10,6 @@ for _, dir in ipairs({ "/usr/bin", "/bin", "/usr/sbin", "/sbin" }) do
   end
 end
 
-
 -- controls where the cursor is allowed to move, even if there's no actual text at that position.
 vim.opt.virtualedit = "block"
 -- gives you live preview of your :substitute (:s) commands before you actually hit Enter.
