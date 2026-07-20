@@ -77,6 +77,7 @@ rose_pine.setup({
     WinbarFileName = { bg = "surface", fg = "foam" },
     WinbarFilePath = { bg = "surface", fg = "gold" },
     FloatBorder = { fg = "foam" },
+    YankHighlight = { bg = "iris", fg = "base" },
     -- NormalFloat = { bg = "foam" },
   },
 

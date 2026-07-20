@@ -1,2 +1,5 @@
 require("autocmds.winbar_updater")
 require("autocmds.dashboard")
+require("autocmds.yank_highlight")
+require("autocmds.formatoptions")
+require("autocmds.auto_resize_splits")
