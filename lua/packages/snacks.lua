@@ -104,7 +104,6 @@ snacks.setup({
       },
       grep = {
         layout = { preset = "sidebar" },
-        regex = false,
       },
       lines = {
         layout = { preset = "vscode" },
