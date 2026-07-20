@@ -218,6 +218,9 @@ M.register_language(require("packages.lsp.languages.csharp"))
 M.register_language(require("packages.lsp.languages.ejs"))
 M.register_language(require("packages.lsp.languages.deno"))
 M.register_language(require("packages.lsp.languages.sql"))
+M.register_language(require("packages.lsp.languages.json"))
+M.register_language(require("packages.lsp.languages.yaml"))
+M.register_language(require("packages.lsp.languages.prisma"))
 
 -- Initialize everything
 M.setup()
