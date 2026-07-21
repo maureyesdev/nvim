@@ -84,6 +84,10 @@
       "rev": "119e8961014c9bfaf1487bf3c2a393d254f337e2",
       "src": "https://github.com/kevinhwang91/promise-async"
     },
+    "revelio.nvim": {
+      "rev": "d6bae0fa92dc4ce526ff80a16334ba2aba5726d2",
+      "src": "https://github.com/maureyesdev/revelio.nvim"
+    },
     "rose-pine": {
       "rev": "cf2a288696b03d0934da713d66c6d71557b5c997",
       "src": "https://github.com/rose-pine/neovim"

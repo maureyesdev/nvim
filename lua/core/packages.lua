@@ -36,4 +36,5 @@ vim.pack.add({
   "https://github.com/windwp/nvim-ts-autotag",
   "https://github.com/windwp/nvim-autopairs",
   "https://github.com/maureyesdev/mermish.nvim",
+  "https://github.com/maureyesdev/revelio.nvim",
 })
